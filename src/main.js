@@ -1,16 +1,17 @@
 import Vue from 'vue'
-import ElementUI from 'element-ui'
+import Bulma from 'bulma'
 import App from './App.vue'
-import './registerServiceWorker'
+// import './registerServiceWorker'
 import router from './router'
 import store from './store'
 
 import Notify from '@/components/notify'
-import 'element-ui/lib/theme-chalk/display.css'
+// import '@/assets/style/realize/element-variable.scss'
+// import 'element-ui/lib/theme-chalk/index.css'
 
 Vue.config.productionTip = false
 
-Vue.use(ElementUI)
+Vue.use(Bulma)
 Vue.use(Notify, {
   reconnection: true,
   reconnectionAttempts: 5,

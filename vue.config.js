@@ -6,5 +6,5 @@ function resolve(dir) {
 
 module.exports = {
   lintOnSave: false,
-  productionSourceMap: false,
+  productionSourceMap: false
 }

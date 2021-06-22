@@ -1,32 +1,26 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div class="column is-8 is-offset-2">
+      <navbar></navbar>
     </div>
     <router-view/>
+    <div class="column is-8 is-offset-2">
+      <footer class="footer is-white">
+        Copyright ©️2019-2021 王晨光 闽ICP备20014107号
+      </footer>
+    </div>
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import navbar from '@/components/layout/navbar.vue'
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+export default {
+  components: {
+    navbar
   }
 }
+</script>
+
+<style lang="scss">
 </style>
