@@ -211,7 +211,7 @@ export default {
     cursor: pointer;
     font-size: 14px;
     text-align: center;
-    font-size: #45526b;
+    //font-size: #45526b;
   }
 }
 .el-dropdown-menu__item {

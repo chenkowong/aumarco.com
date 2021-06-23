@@ -12,6 +12,7 @@
     "bulma": "^0.9.3",
     "core-js": "^3.6.5",
     "element-ui": "^2.15.2",
+    "font-awesome": "^4.7.0",
     "node-sass": "^6.0.0",
     "register-service-worker": "^1.7.1",
     "vue": "^2.6.11",

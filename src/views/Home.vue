@@ -3,22 +3,27 @@
     <div class="column is-6 is-offset-3">
       <div class="container">
         <div>
-          最後，「王子和公主幸福的生活在一起」，便是童話的結尾，王子的冒險故事在此戛然而止。
-          有一天，新的童話將為他們的孩子書寫。森林里傳來萬物的低語，為新王子的降臨祝福。
-          而王子的父親，也許成為了人民愛戴的國王，也許變成了邪惡的巫師，深山里的惡龍，
-          沒有人知道後來發生了什麼。
+          「 社会时常都在发生巨变，这自然会让我们好奇究竟下一次巨变会是什么样子。
+          过去二十年移动手机或智能手机曾经独占鳌头那接下来的二十年这将会被物联网所取代。
+          我们其实已经在物联网这个巨变中了, 每一天我们都在听闻某某行业先锋又在技术领域领先了一小步。
+          这些小变化慢慢积累起来，逐渐成为未来的科技大爆炸 」
         </div>
+        <figure style="position:relative;">
+          <img v-bind:src="background" width="100%" height="100%">
+        </figure>
         <br />
         <br />
       </div>
       <div class="container">
-        <h2 class="subtitle">Recent</h2>
-        <div class="columns" v-for="(item, index) in blog_list" :key="index">
-          <div class="column is-one-third">
-            <span style="color:grey;">{{item.create_time}}</span>
+        <h2 class="subtitle is-success">最新文章</h2>
+        <div class="columns is-mobile" v-for="(item, index) in blog_list" :key="index">
+          <div class="column is-8 amc_column">
+            <span>
+              <a class="amc_router" @click="goBlogUrl(item.id)">{{item.blog_title}}</a>
+            </span>
           </div>
-          <div class="column">
-            <span><a>{{item.blog_title}}</a></span>
+          <div class="column is-4 amc_column" style="text-align: right;">
+            <span style="color:grey;">{{item.create_time}}</span>
           </div>
         </div>
       </div>
@@ -28,11 +33,13 @@
 
 <script>
 import Blog from '@/model/blog'
+import background from '@/assets/images/skills.png'
 
 export default {
   name: 'Home',
   data () {
     return {
+      background: background,
       form: {
         keyWord: '',
         page: 0,
@@ -46,7 +53,6 @@ export default {
   },
   methods: {
     async _getTableData (start, pageCount) {
-      console.log('get blogs')
       this.form.page = start
       this.form.count = pageCount
       try {
@@ -55,6 +61,14 @@ export default {
       } catch (error) {
         console.log(error)
       }
+    },
+    async goBlogUrl(id) {
+      this.$router.push({
+        path: '/blog',
+        query: {
+          comp: id
+        }
+      })
     }
   }
 }

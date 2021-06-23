@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Bulma from 'bulma'
+import ElementUI from 'element-ui'
 import App from './App.vue'
 // import './registerServiceWorker'
 import router from './router'
@@ -7,11 +8,12 @@ import store from './store'
 
 import Notify from '@/components/notify'
 // import '@/assets/style/realize/element-variable.scss'
-// import 'element-ui/lib/theme-chalk/index.css'
+import 'element-ui/lib/theme-chalk/index.css'
 
 Vue.config.productionTip = false
 
 Vue.use(Bulma)
+Vue.use(ElementUI)
 Vue.use(Notify, {
   reconnection: true,
   reconnectionAttempts: 5,

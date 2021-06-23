@@ -70,7 +70,7 @@ export default {
         path: '/'
       }, {
         name: 'Blogs',
-        path: 'blog-list'
+        path: 'archives'
       }],
       navDropdownName: 'About',
       navDropdownList: [{
@@ -84,7 +84,14 @@ export default {
       this.$router.push({
         path: name
       })
+      this.active = false
     }
   }
 }
 </script>
+
+<style type="scss">
+.navbar-item, .navbar-link {
+  color: #45526b !important;
+}
+</style>
