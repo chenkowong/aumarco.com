@@ -38,6 +38,9 @@
           <span>{{blog.blog_like_count}}</span>
         </span>
       </p>
+      <figure v-if="blog">
+        <img v-bind:src="blog.blog_cover" width="100%" height="100%">
+      </figure>
       <br />
       <div id="result" class="markdown-body"></div>
       <br />

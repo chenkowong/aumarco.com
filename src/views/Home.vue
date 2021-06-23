@@ -8,16 +8,51 @@
           我们其实已经在物联网这个巨变中了, 每一天我们都在听闻某某行业先锋又在技术领域领先了一小步。
           这些小变化慢慢积累起来，逐渐成为未来的科技大爆炸 」
         </div>
-        <figure style="position:relative;">
-          <img v-bind:src="background" width="100%" height="100%">
-        </figure>
+<!--        <figure>-->
+<!--          <img v-bind:src="background" width="100%" height="100%">-->
+<!--        </figure>-->
         <br />
         <br />
       </div>
       <div class="container">
+        <div
+          class="card"
+          v-if="blog_list.length > 0"
+          style="cursor:pointer; box-shadow:  none;"
+          @click="goBlogUrl(blog_list[0].id)"
+        >
+          <div class="card-image" style="position:relative;">
+            <figure class="image">
+              <img v-bind:src="blog_list[0].blog_cover" alt="Placeholder image">
+            </figure>
+          </div>
+          <div
+            class="card-content"
+            style="position: absolute; bottom: 0; left: 0; right: 0; border-radius: 0px; background: rgba(255,255,255,0.8)"
+          >
+            <div class="content columns">
+              <div class="column is-9 amc_text">
+                <span>{{blog_list[0].sort_name}}</span>
+                <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+                <span>{{blog_list[0].blog_title}}</span>
+              </div>
+              <div class="column is-3" style="text-align: right;">
+                <span class="icon-text">
+                  <span></span>
+                  <span class="icon">
+                    <i class="fas fa-chevron-right"></i>
+                  </span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br />
+        <br />
+        <br />
         <h2 class="subtitle is-success">最新文章</h2>
         <div class="columns is-mobile" v-for="(item, index) in blog_list" :key="index">
-          <div class="column is-8 amc_column">
+          <div class="column is-8 amc_column amc_text">
             <span>
               <a class="amc_router" @click="goBlogUrl(item.id)">{{item.blog_title}}</a>
             </span>
