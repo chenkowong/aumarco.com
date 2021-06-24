@@ -34,6 +34,14 @@
           </p>
         </div>
       </div>
+      <span class="icon-text">
+        <span class="icon">
+          <i class="fas fa-eye"></i>
+        </span>
+        <span>{{visitor_count}}</span>
+      </span>
+      <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+      <span>focus me on <a class="amc_router" href="https://github.com/chenkowong">Github</a>.</span>
       <br />
       <br />
       <h1 class="title is-5 has-text-success-dark">联系方式</h1>
@@ -89,15 +97,30 @@
 
 <script>
 import avatar from '@/assets/images/me.png'
+import Visitor from '@/model/visitor'
 
 export default {
   data () {
     return {
-      avatar: avatar
+      avatar: avatar,
+      visitor_count: null
     }
+  },
+  created() {
+    this._getVisitorCount()
+  },
+  methods: {
+    async _getVisitorCount () {
+      try {
+        const res = await Visitor.getVisitorById(1)
+        this.visitor_count = res.count
+        // console.log(`visitors: ${this.visitor_count}`)
+      } catch (error) {
+        console.error(error)
+      }
+    },
   }
 }
-
 </script>
 
 <style type="scss" scoped>

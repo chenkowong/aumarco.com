@@ -69,6 +69,7 @@
 
 <script>
 import Blog from '@/model/blog'
+import Visitor from '@/model/visitor'
 import background from '@/assets/images/skills.png'
 
 export default {
@@ -81,13 +82,33 @@ export default {
         page: 0,
         count: 10
       },
-      blog_list: []
+      blog_list: [],
+      visitor_count: null
     }
   },
   created () {
     this._getTableData(0, 10)
+    // this._getVisitorCount()
+    this.registerVisitor()
   },
   methods: {
+    async _getVisitorCount () {
+      try {
+        const res = await Visitor.getVisitorById(1)
+        this.visitor_count = res.count
+        console.log(`visitors: ${this.visitor_count}`)
+      } catch (error) {
+        console.error(error)
+      }
+    },
+    async registerVisitor () {
+      try {
+        const visitor = returnCitySN
+        const res = await Visitor.selectVisitorByCip(visitor)
+      } catch (error) {
+        console.error(error)
+      }
+    },
     async _getTableData (start, pageCount) {
       this.form.page = start
       this.form.count = pageCount
@@ -95,7 +116,7 @@ export default {
         const res = await Blog.getBlogByPages(this.form)
         this.blog_list = res.items
       } catch (error) {
-        console.log(error)
+        console.error(error)
       }
     },
     async goBlogUrl(id) {
