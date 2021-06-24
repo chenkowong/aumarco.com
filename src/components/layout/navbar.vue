@@ -71,20 +71,26 @@ export default {
       }, {
         name: 'Blogs',
         path: 'archives'
+      }, {
+        name: 'About',
+        path: 'about'
       }],
-      navDropdownName: 'About',
+      navDropdownName: 'Social',
       navDropdownList: [{
         name: 'Github',
-        url: 'https://www.github.com'
+        url: 'https://github.com/chenkowong'
       }]
     }
   },
   methods: {
-    goUrl (name) {
+    goUrl(name) {
       this.$router.push({
         path: name
       })
       this.active = false
+    },
+    goWeb(url) {
+      window.open(url)
     }
   }
 }

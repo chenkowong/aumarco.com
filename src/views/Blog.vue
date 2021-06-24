@@ -137,7 +137,7 @@ export default {
         const res = await Blog.getBlogById(this.id)
         this.blog = res
         document.getElementById('result').innerHTML = this.blog.blog_content
-        document.title = this.blog.blog_title
+        document.title = `${this.blog.sort_name} | ${this.blog.blog_title}`
       } catch (error) {
         console.error('find error:', error)
       }

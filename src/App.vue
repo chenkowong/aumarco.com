@@ -16,7 +16,7 @@
               <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
               <span><router-link to="/archives">Blogs</router-link></span>
               <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-              <span>About</span>
+              <span><router-link to="/about">About</router-link></span>
             </p>
           </div>
         </div>

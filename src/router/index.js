@@ -28,8 +28,15 @@ const routes = [
     path: '/blog',
     name: 'Blog',
     component: () => import('../views/Blog')
+  },
+  {
+    path: '/about',
+    name: 'About',
+    component: () => import('../views/About'),
+    meta: {
+      title: '咖啡黑眼圈｜关于王晨光'
+    }
   }
-
 ]
 
 const originalPush = VueRouter.prototype.push;
