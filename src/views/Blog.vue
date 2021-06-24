@@ -1,7 +1,7 @@
 <template>
   <div class="blog">
     <div class="column is-6 is-offset-3">
-      <h1 class="title" v-if="blog">{{blog.blog_title}}</h1>
+      <h1 class="title is-4" v-if="blog">{{blog.blog_title}}</h1>
       <p v-if="blog">
         <span class="icon-text has-text-success-dark">
           <span class="icon">
@@ -38,6 +38,7 @@
           <span>{{blog.blog_like_count}}</span>
         </span>
       </p>
+      <br />
       <figure v-if="blog">
         <img v-bind:src="blog.blog_cover" width="100%" height="100%">
       </figure>
@@ -70,32 +71,34 @@
       </div>
       <table class="table is-fullwidth">
         <thead>
-          <tr>
-            <th>
-              <span class="icon-text has-text-success-dark">
-                <span class="icon">
-                  <i class="fas fa-book-open"></i>
+        <tr>
+          <th style="text-align: left;">
+                <span class="icon-text has-text-success-dark">
+                  <span class="icon">
+                    <i class="fas fa-book-open"></i>
+                  </span>
+                  <span>所有文章</span>
                 </span>
-                <span>最新文章</span>
-              </span>
-            </th>
-            <th></th>
-          </tr>
+          </th>
+          <th></th>
+        </tr>
         </thead>
         <tbody>
-          <tr v-for="(item, index) in recent_list" :key="index">
-            <th>
-              <span>
-                <a class="amc_router" @click="goBlogUrl(item.id)">{{item.blog_title}}</a>
-              </span>
-            </th>
-            <td style="text-align: right;">
-              <span style="color:grey;">{{item.create_time}}</span>
-            </td>
-          </tr>
+        <tr v-for="(item, index) in recent_list" :key="index">
+          <th style="text-align: left;">
+            <div class="amc_text">
+                <span>
+                  <a class="amc_router" @click="goBlogUrl(item.id)">{{item.blog_title}}</a>
+                </span>
+            </div>
+          </th>
+          <td style="text-align: right;">
+            <span style="color:grey;">{{item.create_time}}</span>
+          </td>
+        </tr>
         </tbody>
         <tfoot>
-          <tr><th></th><th></th></tr>
+        <tr><th></th><th></th></tr>
         </tfoot>
       </table>
     </div>
@@ -115,18 +118,26 @@ export default {
     }
   },
   created() {
-    if (this.$route.query.comp) {
-      console.log(this.$route.query.comp)
-      this.id = this.$route.query.comp
-      this._getBlogData()
-    }
+    this.initPage()
+  },
+  watch: {
+    '$route': ['initPage']
   },
   methods: {
+    async initPage() {
+      if (this.$route.query.comp) {
+        this.id = this.$route.query.comp
+      }
+      await this._getBlogData()
+      document.body.scrollTop = 0
+      document.documentElement.scrollTop = 0
+    },
     async _getBlogData() {
       try {
         const res = await Blog.getBlogById(this.id)
         this.blog = res
         document.getElementById('result').innerHTML = this.blog.blog_content
+        document.title = this.blog.blog_title
       } catch (error) {
         console.error('find error:', error)
       }
@@ -141,6 +152,14 @@ export default {
       } catch (error) {
         console.log(error)
       }
+    },
+    async goBlogUrl(id) {
+      this.$router.push({
+        path: '/blog',
+        query: {
+          comp: id
+        }
+      })
     }
   }
 }

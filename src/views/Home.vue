@@ -30,7 +30,7 @@
             class="card-content"
             style="position: absolute; bottom: 0; left: 0; right: 0; border-radius: 0px; background: rgba(255,255,255,0.8)"
           >
-            <div class="content columns">
+            <div class="content columns is-mobile">
               <div class="column is-9 amc_text">
                 <span>{{blog_list[0].sort_name}}</span>
                 <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>

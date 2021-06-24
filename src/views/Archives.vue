@@ -3,32 +3,34 @@
     <div class="column is-6 is-offset-3">
       <table class="table is-fullwidth">
         <thead>
-        <tr>
-          <th>
-              <span class="icon-text has-text-success-dark">
-                <span class="icon">
-                  <i class="fas fa-book-open"></i>
+          <tr>
+            <th style="text-align: left;">
+                <span class="icon-text has-text-success-dark">
+                  <span class="icon">
+                    <i class="fas fa-book-open"></i>
+                  </span>
+                  <span>所有文章</span>
                 </span>
-                <span>所有文章</span>
-              </span>
-          </th>
-          <th></th>
-        </tr>
+            </th>
+            <th></th>
+          </tr>
         </thead>
         <tbody>
-        <tr v-for="(item, index) in blog_list" :key="index">
-          <th>
-              <span>
-                <a class="amc_router" @click="goBlogUrl(item.id)">{{item.blog_title}}</a>
-              </span>
-          </th>
-          <td style="text-align: right;">
-            <span style="color:grey;">{{item.create_time}}</span>
-          </td>
-        </tr>
-        </tbody>
-        <tfoot>
-        <tr><th></th><th></th></tr>
+          <tr v-for="(item, index) in blog_list" :key="index">
+            <th style="text-align: left;">
+              <div class="amc_text">
+                <span>
+                  <a class="amc_router" @click="goBlogUrl(item.id)">{{item.blog_title}}</a>
+                </span>
+              </div>
+            </th>
+            <td style="text-align: right;">
+              <span style="color:grey;">{{item.create_time}}</span>
+            </td>
+          </tr>
+          </tbody>
+          <tfoot>
+          <tr><th></th><th></th></tr>
         </tfoot>
       </table>
       <button
@@ -88,7 +90,19 @@ export default {
     async getMoreBlog() {
       const next_page = this.form.page + 1
       await this._getTableData(next_page, 20)
+    },
+    async goBlogUrl(id) {
+      this.$router.push({
+        path: '/blog',
+        query: {
+          comp: id
+        }
+      })
     }
   }
 }
 </script>
+
+<style type="scss" scoped>
+@import '../assets/style/element-variable.scss';
+</style>

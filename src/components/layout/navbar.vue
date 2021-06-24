@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar has-shadow" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <a class="navbar-item" href="https://bulma.io">
+      <a class="navbar-item" href="https://blog.aumarco.com">
         <img :src="logo" width="136" height="52">
       </a>
 

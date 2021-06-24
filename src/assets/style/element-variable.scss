@@ -3,10 +3,14 @@
 }
 
 .amc_text {
-  width: 300px;
+  box-sizing: border-box;
+  width: 200px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  @media screen and (min-width 680px) {
+    width: 100%;
+  }
 }
 
 .amc_router {
