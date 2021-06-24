@@ -51,7 +51,7 @@
         <br />
         <br />
         <br />
-        <h2 class="subtitle is-success">最新文章</h2>
+        <h1 class="title has-text-success-dark is-5">最新文章</h1>
         <div class="columns is-mobile" v-for="(item, index) in blog_list" :key="index">
           <div class="column is-8 amc_column amc_text">
             <span>

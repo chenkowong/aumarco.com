@@ -51,34 +51,52 @@
         disabled
       >已经到最底啦</button>
       <br />
-      <div class="columns is-mobile">
+      <div class="columns is-mobile" v-if="blog">
         <div class="column is-half-desktop">
-          <span class="icon-text">
+          <button
+            class="button"
+            style="border: none;"
+            :disabled="blog.prev_blog_id === -1"
+            @click="goBlogUrl(blog.prev_blog_id)"
+          >
             <span class="icon">
               <i class="fas fa-chevron-left"></i>
             </span>
-            <span>上一篇</span>
-          </span>
+            <span v-if="blog.prev_blog_id === -1">没有啦</span>
+            <span v-else>上一篇</span>
+          </button>
+<!--          <span class="icon-text">-->
+<!--            <span class="icon">-->
+<!--              <i class="fas fa-chevron-left"></i>-->
+<!--            </span>-->
+<!--            <span>上一篇</span>-->
+<!--          </span>-->
         </div>
         <div class="column is-half-desktop" style="text-align: right;">
-          <span class="icon-text">
-            <span>下一篇</span>
+          <button
+            class="button"
+            style="border: none;"
+            :disabled="blog.next_blog_id === -1"
+            @click="goBlogUrl(blog.next_blog_id)"
+          >
+            <span v-if="blog.next_blog_id === -1">没有啦</span>
+            <span v-else>下一篇</span>
             <span class="icon">
               <i class="fas fa-chevron-right"></i>
             </span>
-          </span>
+          </button>
         </div>
       </div>
       <table class="table is-fullwidth">
         <thead>
         <tr>
           <th style="text-align: left;">
-                <span class="icon-text has-text-success-dark">
-                  <span class="icon">
-                    <i class="fas fa-book-open"></i>
-                  </span>
-                  <span>所有文章</span>
-                </span>
+            <span class="icon-text has-text-success-dark">
+              <span class="icon">
+                <i class="fas fa-book-open"></i>
+              </span>
+              <span>最新文章</span>
+            </span>
           </th>
           <th></th>
         </tr>
