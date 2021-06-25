@@ -13,6 +13,15 @@
   }
 }
 
+.amc_audio {
+  background: rgb(241,243,244);
+}
+
+_::-webkit-full-page-media, _:future, :root .amc_audio {
+  color: #ffffff;
+  background: rgb(57,57,57);
+}
+
 .amc_router {
   color: #45526b;
   text-decoration: underline;
