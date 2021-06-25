@@ -17,8 +17,9 @@
             <img src="https://img.shields.io/badge/Editor-IDEA-informational?style=flat-square&amp;logo=intellij-idea&amp;logoColor=white" alt="OS">
           </p>
           <p>
-            <img src="https://img.shields.io/badge/-Java-rgb(1, 117, 194)?style=flat-square&amp;logo=java&amp;logoColor=ffffff" alt="Java">&nbsp;
+            <img src="https://img.shields.io/badge/-Java-rgb(1, 117, 194)?style=flat-square&amp;logo=java" alt="Java">&nbsp;
             <img src="https://img.shields.io/badge/-Dart-rgb(0, 115, 150)?style=flat-square&amp;logo=dart&amp;logoColor=ffffff" alt="Dart">&nbsp;
+            <img src="https://img.shields.io/badge/-Node.js-rgb(51, 153, 51)?style=flat-square&amp;logo=node.js&amp;logoColor=ffffff" alt="Node.js">&nbsp;
             <img src="https://img.shields.io/badge/-HTML5-%23E44D27?style=flat-square&amp;logo=html5&amp;logoColor=ffffff" alt="HTML5">&nbsp;
             <img src="https://img.shields.io/badge/-CSS3-%231572B6?style=flat-square&amp;logo=css3" alt="CSS3">&nbsp;
             <img src="https://img.shields.io/badge/-JavaScript-%23F7DF1C?style=flat-square&amp;logo=javascript&amp;logoColor=000000&amp;labelColor=%23F7DF1C&amp;color=%23FFCE5A" alt="JavaScript">&nbsp;
@@ -26,6 +27,7 @@
             <img src="https://img.shields.io/badge/-Flutter-rgb(2, 86, 155)?style=flat-square&amp;logo=flutter&amp;logoColor=ffffff" alt="Flutter">&nbsp;
             <img src="https://img.shields.io/badge/-Vue.js-%232c3e50?style=flat-square&amp;logo=Vue.js" alt="Vue.js">&nbsp;
             <img src="https://img.shields.io/badge/-MySQL-rgb(68, 121, 161)?style=flat-square&amp;logo=mysql&amp;logoColor=ffffff" alt="mysql">&nbsp;
+            <img src="https://img.shields.io/badge/-Docker-rgb(36, 150, 237)?style=flat-square&amp;logo=docker&amp;logoColor=ffffff" alt="Docker">&nbsp;
             <img src="https://img.shields.io/badge/-NGINX-rgb(0, 150, 57)?style=flat-square&amp;logo=nginx&amp;logoColor=ffffff" alt="NGINX">&nbsp;
             <img src="https://img.shields.io/badge/-Webpack-%232C3A42?style=flat-square&amp;logo=webpack" alt="Webpack">&nbsp;
             <img src="https://img.shields.io/badge/-Git-%23F05032?style=flat-square&amp;logo=git&amp;logoColor=%23ffffff" alt="Git">&nbsp;
@@ -97,28 +99,15 @@
 
 <script>
 import avatar from '@/assets/images/me.png'
-import Visitor from '@/model/visitor'
+import globalMixin from "@/mixin/global"
 
 export default {
+  mixins: [globalMixin],
   data () {
     return {
       avatar: avatar,
       visitor_count: null
     }
-  },
-  created() {
-    this._getVisitorCount()
-  },
-  methods: {
-    async _getVisitorCount () {
-      try {
-        const res = await Visitor.getVisitorById(1)
-        this.visitor_count = res.count
-        // console.log(`visitors: ${this.visitor_count}`)
-      } catch (error) {
-        console.error(error)
-      }
-    },
   }
 }
 </script>

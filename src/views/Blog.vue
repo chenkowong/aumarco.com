@@ -23,20 +23,20 @@
           </span>
           <span>{{blog.blog_views}}</span>
         </span>
-        <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-        <span class="icon-text has-text-success-dark">
-          <span class="icon">
-            <i class="fas fa-comment-alt"></i>
-          </span>
-          <span>{{blog.blog_comment_count}}</span>
-        </span>
-        <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-        <span class="icon-text has-text-success-dark">
-          <span class="icon">
-            <i class="fas fa-heart"></i>
-          </span>
-          <span>{{blog.blog_like_count}}</span>
-        </span>
+<!--        <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>-->
+<!--        <span class="icon-text has-text-success-dark">-->
+<!--          <span class="icon">-->
+<!--            <i class="fas fa-comment-alt"></i>-->
+<!--          </span>-->
+<!--          <span>{{blog.blog_comment_count}}</span>-->
+<!--        </span>-->
+<!--        <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>-->
+<!--        <span class="icon-text has-text-success-dark">-->
+<!--          <span class="icon">-->
+<!--            <i class="fas fa-heart"></i>-->
+<!--          </span>-->
+<!--          <span>{{blog.blog_like_count}}</span>-->
+<!--        </span>-->
       </p>
       <br />
       <figure v-if="blog">
@@ -125,9 +125,12 @@
 
 <script>
 import Blog from '@/model/blog'
+import Visitor from '@/model/visitor'
+import globalMixin from "@/mixin/global";
 
 export default {
   name: 'blog',
+  mixins: [globalMixin],
   data() {
     return {
       id: null,
@@ -139,7 +142,8 @@ export default {
     this.initPage()
   },
   watch: {
-    '$route': ['initPage']
+    '$route': ['initPage', 'registerVisitor'],
+    'register_visitor': ['dispatchBlogVisitor']
   },
   methods: {
     async initPage() {
@@ -167,6 +171,18 @@ export default {
       try {
         const res = await Blog.getBlogByPages(search_form)
         this.recent_list = res.items
+      } catch (error) {
+        console.log(error)
+      }
+    },
+    async dispatchBlogVisitor() {
+      console.warn('find visitor')
+      const vcip = JSON.parse(sessionStorage.getItem('vis')).cip
+      try {
+        await Visitor.dispatchBlogVisitor({
+          blog_id: this.id,
+          cip: vcip
+        })
       } catch (error) {
         console.log(error)
       }
