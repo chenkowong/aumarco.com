@@ -18,13 +18,13 @@
       <div class="container">
         <div
           class="card"
-          v-if="blog_list.length > 0"
+          v-if="blog_recent_list.length > 0"
           style="cursor:pointer; box-shadow:  none;"
-          @click="goBlogUrl(blog_list[0].id)"
+          @click="goBlogUrl(blog_recent_list[0].id)"
         >
           <div class="card-image" style="position:relative;">
             <figure class="image">
-              <img v-bind:src="blog_list[0].blog_cover" alt="Placeholder image">
+              <img v-bind:src="blog_recent_list[0].blog_cover" alt="Placeholder image">
             </figure>
           </div>
           <div
@@ -33,9 +33,9 @@
           >
             <div class="content columns is-mobile">
               <div class="column is-9 amc_text">
-                <span>{{blog_list[0].sort_name}}</span>
+                <span>{{blog_recent_list[0].sort_name}}</span>
                 <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-                <span>{{blog_list[0].blog_title}}</span>
+                <span>{{blog_recent_list[0].blog_title}}</span>
               </div>
               <div class="column is-3" style="text-align: right;">
                 <span class="icon-text">
@@ -52,7 +52,7 @@
         <br />
         <br />
         <h1 class="title has-text-success-dark is-5">最新文章</h1>
-        <div class="columns is-mobile" v-for="(item, index) in blog_list" :key="index">
+        <div class="columns is-mobile" v-for="(item, index) in blog_recent_list" :key="index">
           <div class="column is-8 amc_column amc_text">
             <span>
               <a class="amc_router" @click="goBlogUrl(item.id)">{{item.blog_title}}</a>
@@ -62,6 +62,22 @@
             <span style="color:grey;">{{item.create_time}}</span>
           </div>
         </div>
+        <br />
+        <br />
+        <br />
+        <h1 class="title has-text-success-dark is-5">我喜欢的</h1>
+        <div class="columns is-mobile" v-for="item in blog_ilike_list" :key="item.id">
+          <div class="column is-8 amc_column amc_text">
+            <span>
+              <a class="amc_router" @click="goBlogUrl(item.id)">{{item.blog_title}}</a>
+            </span>
+          </div>
+          <div class="column is-4 amc_column" style="text-align: right;">
+            <span style="color:grey;">{{item.create_time}}</span>
+          </div>
+        </div>
+        <br />
+        <br />
       </div>
     </div>
   </div>
@@ -83,19 +99,34 @@ export default {
         page: 0,
         count: 10
       },
-      blog_list: []
+      blog_recent_list: [],
+      blog_ilike_list: []
     }
   },
   created () {
-    this._getTableData(0, 10)
+    this._getRecentBlog(0, 10)
+    this._getSortBlog(0, 10, 7)
   },
   methods: {
-    async _getTableData (start, pageCount) {
+    async _getRecentBlog (start, pageCount) {
       this.form.page = start
       this.form.count = pageCount
       try {
         const res = await Blog.getBlogByPages(this.form)
-        this.blog_list = res.items
+        this.blog_recent_list = res.items
+      } catch (error) {
+        console.error(error)
+      }
+    },
+    async _getSortBlog (start, pageCount, sortId) {
+      try {
+        const res = await Blog.getBlogBySortId({
+          page: start,
+          count: pageCount,
+          sort_id: sortId
+        })
+        console.log(res)
+        this.blog_ilike_list = res.items
       } catch (error) {
         console.error(error)
       }
