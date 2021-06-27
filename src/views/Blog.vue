@@ -12,7 +12,7 @@
         <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
         <span class="icon-text has-text-success-dark">
           <span class="icon">
-            <i class="fas fa-book"></i>
+            <i class="fas fa-tag"></i>
           </span>
           <span>{{blog.sort_name}}</span>
         </span>
@@ -168,9 +168,12 @@ export default {
         page: 0,
         count: 10
       }
+      this.recent_list = []
       try {
         const res = await Blog.getBlogByPages(search_form)
-        this.recent_list = res.items
+        res.items.forEach(item => {
+          if (item.id.toString() !== this.id) this.recent_list.push(item)
+        })
       } catch (error) {
         console.log(error)
       }

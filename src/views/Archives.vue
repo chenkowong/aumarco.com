@@ -1,16 +1,27 @@
 <template>
   <div class="archives">
     <div class="column is-6 is-offset-3">
+      <div class="tags" style="margin-bottom: 0px;">
+<!--        <i class="tag fas fa-book-open"></i>-->
+        <span
+          class="tag"
+          :class="{'is-success': item.isActive}"
+          v-for="(item, index) in sort_list"
+          :key="index"
+          @click="handleChangeSort(item)"
+          style="cursor: pointer;"
+        >{{item.sort_name}}</span>
+      </div>
       <table class="table is-fullwidth">
         <thead>
           <tr>
             <th style="text-align: left;">
-                <span class="icon-text has-text-success-dark">
-                  <span class="icon">
-                    <i class="fas fa-book-open"></i>
-                  </span>
-                  <span>所有文章</span>
-                </span>
+<!--              <span class="icon-text has-text-success-dark">-->
+<!--                <span class="icon">-->
+<!--                  <i class="fas fa-book"></i>-->
+<!--                </span>-->
+<!--                <span>所有文章</span>-->
+<!--              </span>-->
             </th>
             <th></th>
           </tr>
@@ -49,26 +60,49 @@
 </template>
 
 <script>
+import Sort from '@/model/sort'
 import Blog from '@/model/blog'
 
 export default {
   data () {
     return {
+      active: false,
       form: {
-        keyWord: '',
+        keyWord: "",
+        sort_id: "",
         page: 0,
         count: 20
       },
+      sort_list: [
+        {
+          sort_name: '# 所有文章',
+          id: '',
+          isActive: true
+        }
+      ],
       blog_list: [],
       blog_total: 0,
       showButton: true
     }
   },
   created () {
-    this._getTableData(0, 20)
+    this._getAllSorts()
+    this._getBlogsByKeyWord(0, 20)
   },
   methods: {
-    async _getTableData (start, pageCount) {
+    async _getAllSorts() {
+      try {
+        const res = await Sort.getAllSort()
+        res.forEach(item => {
+          item.sort_name = `# ${item.sort_name}`
+          this.$set(item, 'isActive', false)
+          this.sort_list.push(item)
+        })
+      } catch (e) {
+        console.error(e)
+      }
+    },
+    async _getBlogsByKeyWord (start, pageCount) {
       this.form.page = start
       this.form.count = pageCount
       try {
@@ -82,14 +116,43 @@ export default {
         } else {
           this.showButton = false
         }
-        console.log(this.blog_list)
+      } catch (e) {
+        console.log(e)
+      }
+    },
+    async _getBlogsBySort (start, pageCount) {
+      this.form.page = start
+      this.form.count = pageCount
+      try {
+        const res = await Blog.getBlogBySortId(this.form)
+        this.blog_total = res.total
+        if (res.items.length !== 0) {
+          res.items.forEach(item => {
+            this.blog_list.push(item)
+            if (this.blog_list.length === this.blog_total) this.showButton = false
+          })
+        } else {
+          this.showButton = false
+        }
       } catch (error) {
         console.log(error)
       }
     },
     async getMoreBlog() {
       const next_page = this.form.page + 1
-      await this._getTableData(next_page, 20)
+      if (this.form.sort_id === "") await this._getBlogsByKeyWord(next_page, 20)
+      else await this._getBlogsBySort(next_page, 10)
+    },
+    async handleChangeSort(sort) {
+      document.title = sort.sort_name
+      this.sort_list.forEach(item => {
+        if (item.id === sort.id) item.isActive = true
+        else item.isActive = false
+      })
+      this.blog_list = []
+      this.form.sort_id = sort.id
+      if (this.form.sort_id === "") await this._getBlogsByKeyWord(0, 10)
+      else await this._getBlogsBySort(0, 10)
     },
     async goBlogUrl(id) {
       this.$router.push({

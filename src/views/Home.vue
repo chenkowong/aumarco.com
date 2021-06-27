@@ -16,15 +16,16 @@
         <br />
       </div>
       <div class="container">
+        <h1 class="title has-text-success-dark is-5">最新文章</h1>
         <div
           class="card"
-          v-if="blog_recent_list.length > 0"
+          v-if="blog_recent_top"
           style="cursor:pointer; box-shadow:  none;"
-          @click="goBlogUrl(blog_recent_list[0].id)"
+          @click="goBlogUrl(blog_recent_top.id)"
         >
           <div class="card-image" style="position:relative;">
             <figure class="image">
-              <img v-bind:src="blog_recent_list[0].blog_cover" alt="Placeholder image">
+              <img v-bind:src="blog_recent_top.blog_cover" alt="Placeholder image">
             </figure>
           </div>
           <div
@@ -33,9 +34,9 @@
           >
             <div class="content columns is-mobile">
               <div class="column is-9 amc_text">
-                <span>{{blog_recent_list[0].sort_name}}</span>
-                <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-                <span>{{blog_recent_list[0].blog_title}}</span>
+<!--                <span>{{blog_recent_top.sort_name}}</span>-->
+<!--                <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>-->
+                <span>{{blog_recent_top.blog_title}}</span>
               </div>
               <div class="column is-3" style="text-align: right;">
                 <span class="icon-text">
@@ -50,8 +51,6 @@
         </div>
         <br />
         <br />
-        <br />
-        <h1 class="title has-text-success-dark is-5">最新文章</h1>
         <div class="columns is-mobile" v-for="(item, index) in blog_recent_list" :key="index">
           <div class="column is-8 amc_column amc_text">
             <span>
@@ -66,6 +65,40 @@
         <br />
         <br />
         <h1 class="title has-text-success-dark is-5">我喜欢的</h1>
+        <div
+          class="card"
+          v-if="blog_ilike_top"
+          style="cursor:pointer; box-shadow:  none;"
+          @click="goBlogUrl(blog_ilike_top.id)"
+        >
+          <div class="card-image" style="position:relative;">
+            <figure class="image">
+              <img v-bind:src="blog_ilike_top.blog_cover" alt="Placeholder image">
+            </figure>
+          </div>
+          <div
+            class="card-content"
+            style="position: absolute; bottom: 0; left: 0; right: 0; border-radius: 0px; background: rgba(255,255,255,0.8)"
+          >
+            <div class="content columns is-mobile">
+              <div class="column is-9 amc_text">
+                <!--                <span>{{blog_recent_top.sort_name}}</span>-->
+                <!--                <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>-->
+                <span>{{blog_ilike_top.blog_title}}</span>
+              </div>
+              <div class="column is-3" style="text-align: right;">
+                <span class="icon-text">
+                  <span></span>
+                  <span class="icon">
+                    <i class="fas fa-chevron-right"></i>
+                  </span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br />
+        <br />
         <div class="columns is-mobile" v-for="item in blog_ilike_list" :key="item.id">
           <div class="column is-8 amc_column amc_text">
             <span>
@@ -99,13 +132,15 @@ export default {
         page: 0,
         count: 10
       },
+      blog_recent_top: null,
       blog_recent_list: [],
+      blog_ilike_top: null,
       blog_ilike_list: []
     }
   },
   created () {
     this._getRecentBlog(0, 10)
-    this._getSortBlog(0, 10, 7)
+    this._getIlikeBlog(0, 10, 7)
   },
   methods: {
     async _getRecentBlog (start, pageCount) {
@@ -113,20 +148,25 @@ export default {
       this.form.count = pageCount
       try {
         const res = await Blog.getBlogByPages(this.form)
-        this.blog_recent_list = res.items
+        res.items.forEach((item, index) => {
+          if (index === 0) this.blog_recent_top = item
+          else this.blog_recent_list.push(item)
+        })
       } catch (error) {
         console.error(error)
       }
     },
-    async _getSortBlog (start, pageCount, sortId) {
+    async _getIlikeBlog (start, pageCount, sortId) {
       try {
         const res = await Blog.getBlogBySortId({
           page: start,
           count: pageCount,
           sort_id: sortId
         })
-        console.log(res)
-        this.blog_ilike_list = res.items
+        res.items.forEach((item, index) => {
+          if (index === 0) this.blog_ilike_top = item
+          else this.blog_ilike_list.push(item)
+        })
       } catch (error) {
         console.error(error)
       }
