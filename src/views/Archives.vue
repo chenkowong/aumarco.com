@@ -112,6 +112,7 @@ export default {
           res.items.forEach(item => {
             this.blog_list.push(item)
             if (this.blog_list.length === this.blog_total) this.showButton = false
+            else this.showButton = true
           })
         } else {
           this.showButton = false
@@ -141,7 +142,7 @@ export default {
     async getMoreBlog() {
       const next_page = this.form.page + 1
       if (this.form.sort_id === "") await this._getBlogsByKeyWord(next_page, 20)
-      else await this._getBlogsBySort(next_page, 10)
+      else await this._getBlogsBySort(next_page, 20)
     },
     async handleChangeSort(sort) {
       document.title = sort.sort_name
@@ -151,8 +152,8 @@ export default {
       })
       this.blog_list = []
       this.form.sort_id = sort.id
-      if (this.form.sort_id === "") await this._getBlogsByKeyWord(0, 10)
-      else await this._getBlogsBySort(0, 10)
+      if (this.form.sort_id === "") await this._getBlogsByKeyWord(0, 20)
+      else await this._getBlogsBySort(0, 20)
     },
     async goBlogUrl(id) {
       this.$router.push({
