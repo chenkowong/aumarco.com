@@ -100,4 +100,7 @@ export default {
 .navbar-item, .navbar-link {
   color: #45526b !important;
 }
+a.navbar-link::after {
+  border-color: #257953 !important;
+}
 </style>

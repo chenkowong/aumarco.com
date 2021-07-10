@@ -98,7 +98,7 @@
 </template>
 
 <script>
-import avatar from '@/assets/images/me.png'
+import avatar from '@/assets/images/old.jpeg'
 import globalMixin from "@/mixin/global"
 
 export default {

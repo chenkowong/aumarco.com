@@ -63,7 +63,6 @@
         </div>
         <br />
         <br />
-        <br />
         <h1 class="title has-text-success-dark is-5">我喜欢的</h1>
         <div
           class="card"
