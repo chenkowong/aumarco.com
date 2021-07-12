@@ -112,7 +112,6 @@ export default {
 }
 </script>
 
-<style type="scss" scoped>
-@import '../assets/style/markdown.scss';
+<style type="scss">
 @import '../assets/style/element-variable.scss';
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home amc_page">
     <div class="column is-6 is-offset-3">
       <div class="container">
         <br />
@@ -182,6 +182,6 @@ export default {
 }
 </script>
 
-<style type="scss" scoped>
+<style type="scss">
 @import '../assets/style/element-variable.scss';
 </style>

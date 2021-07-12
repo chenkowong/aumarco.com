@@ -1,5 +1,5 @@
 <template>
-  <div class="archives">
+  <div class="archives amc_page">
     <div class="column is-6 is-offset-3">
       <div class="tags" style="margin-bottom: 0px;">
 <!--        <i class="tag fas fa-book-open"></i>-->
@@ -31,7 +31,7 @@
             <th style="text-align: left;">
               <div class="amc_text">
                 <span>
-                  <a class="amc_router" @click="goBlogUrl(item.id)">{{item.blog_title}}</a>
+                  <a class="amc_router amc_page" @click="goBlogUrl(item.id)">{{item.blog_title}}</a>
                 </span>
               </div>
             </th>
@@ -167,6 +167,6 @@ export default {
 }
 </script>
 
-<style type="scss" scoped>
+<style type="scss">
 @import '../assets/style/element-variable.scss';
 </style>

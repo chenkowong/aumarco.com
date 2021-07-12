@@ -87,7 +87,7 @@
           </button>
         </div>
       </div>
-      <table class="table is-fullwidth">
+      <table class="table is-fullwidth amc_page">
         <thead>
         <tr>
           <th style="text-align: left;">
@@ -106,7 +106,7 @@
           <th style="text-align: left;">
             <div class="amc_text">
                 <span>
-                  <a class="amc_router" @click="goBlogUrl(item.id)">{{item.blog_title}}</a>
+                  <a class="amc_router amc_page" @click="goBlogUrl(item.id)">{{item.blog_title}}</a>
                 </span>
             </div>
           </th>
@@ -202,7 +202,7 @@ export default {
 }
 </script>
 
-<style type="scss" scoped>
+<style type="scss">
 @import '../assets/style/markdown.scss';
 @import '../assets/style/element-variable.scss';
 </style>
