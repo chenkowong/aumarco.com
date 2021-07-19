@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar has-shadow" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <a class="navbar-item" href="https://blog.aumarco.com">
+      <a class="navbar-item" href="https://www.aumarco.com">
         <img :src="logo" width="136" height="52">
       </a>
 
@@ -79,6 +79,9 @@ export default {
       navDropdownList: [{
         name: 'Github',
         url: 'https://github.com/chenkowong'
+      }, {
+        name: 'Timeline',
+        url: 'https://www.aumarco.com/timeline'
       }]
     }
   },

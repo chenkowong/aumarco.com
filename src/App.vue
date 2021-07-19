@@ -8,7 +8,9 @@
       <footer class="footer is-white" style="padding: 24px;">
         <div class="columns">
           <div class="column is-three-fifths has-text-centered">
-            <p style="font-size:14px;">Copyright ©️2019-2021 王晨光 闽ICP备20014107号</p>
+            <p style="font-size:14px;">Copyright ©️2019-2021 王晨光
+              <a class="amc_router" href="https://beian.miit.gov.cn/" target="_blank">闽ICP备20014107号</a>
+            </p>
           </div>
           <div class="column has-text-centered">
             <p style="font-size:14px;">

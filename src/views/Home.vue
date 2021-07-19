@@ -2,6 +2,9 @@
   <div class="home amc_page">
     <div class="column is-6 is-offset-3">
       <div class="container">
+        <figure>
+          <img v-bind:src="background" width="100%" height="100%">
+        </figure>
         <br />
         <div>
           「 社会时常都在发生巨变，这自然会让我们好奇究竟下一次巨变会是什么样子。
@@ -9,9 +12,6 @@
           我们其实已经在物联网这个巨变中了, 每一天我们都在听闻某某行业先锋又在技术领域领先了一小步。
           这些小变化慢慢积累起来，逐渐成为未来的科技大爆炸 」🚀🚀🚀
         </div>
-<!--        <figure>-->
-<!--          <img v-bind:src="background" width="100%" height="100%">-->
-<!--        </figure>-->
         <br />
         <br />
       </div>
@@ -24,8 +24,14 @@
           @click="goBlogUrl(blog_recent_top.id)"
         >
           <div class="card-image" style="position:relative;">
-            <figure class="image">
-              <img v-bind:src="blog_recent_top.blog_cover" alt="Placeholder image">
+            <figure class="image is-2by1">
+              <img
+                :style="{
+                  backgroundImage: 'url(' + blog_recent_top.blog_cover + ')',
+                  backgroundSize: '100%'
+                }"
+              >
+<!--              <img v-bind:src="blog_recent_top.blog_cover" alt="Placeholder image">-->
             </figure>
           </div>
           <div
@@ -71,8 +77,14 @@
           @click="goBlogUrl(blog_ilike_top.id)"
         >
           <div class="card-image" style="position:relative;">
-            <figure class="image">
-              <img v-bind:src="blog_ilike_top.blog_cover" alt="Placeholder image">
+            <figure class="image is-2by1">
+              <img
+                :style="{
+                  backgroundImage: 'url(' + blog_ilike_top.blog_cover + ')',
+                  backgroundSize: '100%'
+                }"
+              >
+<!--              <img v-bind:src="blog_ilike_top.blog_cover" alt="Placeholder image">-->
             </figure>
           </div>
           <div
@@ -117,7 +129,7 @@
 
 <script>
 import Blog from '@/model/blog'
-import background from '@/assets/images/skills.png'
+import background from '@/assets/images/ilike.gif'
 import globalMixin from "@/mixin/global";
 
 export default {

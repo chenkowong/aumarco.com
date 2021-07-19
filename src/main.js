@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Bulma from 'bulma'
+import 'bulma-extensions/dist/css/bulma-extensions.min.css' // bulma-extensions css style
 import ElementUI from 'element-ui'
 import App from './App.vue'
-// import './registerServiceWorker'
 import router from './router'
 import store from './store'
 
