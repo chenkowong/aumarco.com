@@ -72,6 +72,9 @@ export default {
         name: 'Blogs',
         path: 'archives'
       }, {
+        name: 'Books',
+        path: 'book'
+      }, {
         name: 'About',
         path: 'about'
       }],

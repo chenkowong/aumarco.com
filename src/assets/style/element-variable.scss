@@ -17,9 +17,50 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  @media screen and (min-width 680px) {
-    width: 100%;
-  }
+}
+
+.amc_td_left {
+  width: 14%;
+}
+.amc_td_right {
+  width: 84%;
+}
+
+.amc_td_image {
+  width: 50%;
+  height: 50%;
+}
+
+.amc_td_text_medium {
+  //box-sizing: border-box;
+  //width: 80%;
+  //overflow: hidden;
+  //white-space: nowrap;
+  //text-overflow: ellipsis;
+  font-size: 16px;
+}
+
+.amc_td_text_small {
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.amc_text_by2 {
+  overflow:hidden;
+  text-overflow:ellipsis;
+  display: -webkit-box;
+  -webkit-box-align: start;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2;
+}
+
+.amc_text_by1 {
+  overflow:hidden;
+  text-overflow:ellipsis;
+  display: -webkit-box;
+  -webkit-box-align: start;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:1;
 }
 
 .amc_audio {
@@ -34,4 +75,40 @@ _::-webkit-full-page-media, _:future, :root .amc_audio {
 .amc_router {
   color: #45526b;
   text-decoration: underline;
+}
+
+.amc_book_mobile {
+  //display: none !important;
+}
+
+.amc_book_desktop {
+  display: block;
+}
+
+@media screen and (max-width: 1023px) {
+  .amc_book_mobile {
+    display: flex !important;
+  }
+  .amc_book_desktop {
+    //display: none !important;
+  }
+  .amc_td_image {
+    //width: 60px;
+  }
+  .amc_td_text_medium {
+    font-size: 14px;
+  }
+  .amc_td_text_small {
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .amc_td_left {
+    width: 30%;
+  }
+  .amc_td_right {
+    width: 70%;
+  }
 }
