@@ -1,6 +1,11 @@
 <template>
   <div class="archives amc_page">
     <div class="column is-6 is-offset-3">
+      <figure>
+        <img src="https://qn.aumarco.com/49b68f35gy1gsjzemiyebg20vi0f63yx.gif" width="100%" height="100%">
+      </figure>
+      <br>
+      <br>
       <div class="tags" style="margin-bottom: 0px;">
 <!--        <i class="tag fas fa-book-open"></i>-->
         <span

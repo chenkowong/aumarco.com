@@ -32,7 +32,10 @@ const routes = [
   {
     path: '/book',
     name: 'Book',
-    component: () => import('../views/Book')
+    component: () => import('../views/Book'),
+    meta: {
+      title: '我的书单'
+    }
   },
   {
     path: '/timeline',
@@ -44,7 +47,7 @@ const routes = [
     name: 'About',
     component: () => import('../views/About'),
     meta: {
-      title: '咖啡黑眼圈｜关于王晨光'
+      title: '关于博主'
     }
   }
 ]
