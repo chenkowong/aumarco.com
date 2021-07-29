@@ -122,6 +122,45 @@
         </div>
         <br />
         <br />
+        <div
+          class="card"
+          v-if="blog_ifocus"
+          style="cursor:pointer; box-shadow:  none;"
+          @click="goBlogUrl(blog_ifocus.id)"
+        >
+          <div class="card-image" style="position:relative;">
+            <figure class="image is-2by1">
+              <img
+                :style="{
+                  backgroundImage: 'url(' + blog_ifocus.blog_cover + ')',
+                  backgroundSize: '100%'
+                }"
+              >
+            </figure>
+          </div>
+          <div
+            class="card-content"
+            style="position: absolute; bottom: 0; left: 0; right: 0; border-radius: 0px; background: rgba(255,255,255,0.8)"
+          >
+            <div class="content columns is-mobile">
+              <div class="column is-9 amc_text">
+                <!--                <span>{{blog_recent_top.sort_name}}</span>-->
+                <!--                <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>-->
+                <span>{{blog_ifocus.blog_title}}</span>
+              </div>
+              <div class="column is-3" style="text-align: right;">
+                <span class="icon-text">
+                  <span></span>
+                  <span class="icon">
+                    <i class="fas fa-chevron-right"></i>
+                  </span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br />
+        <br />
       </div>
     </div>
   </div>
@@ -146,12 +185,15 @@ export default {
       blog_recent_top: null,
       blog_recent_list: [],
       blog_ilike_top: null,
-      blog_ilike_list: []
+      blog_ilike_list: [],
+      blog_ifocus: null,
+      blog_version: null
     }
   },
   created () {
     this._getRecentBlog(0, 10)
     this._getIlikeBlog(0, 10, 7)
+    this._getSingleBlog()
   },
   methods: {
     async _getRecentBlog (start, pageCount) {
@@ -178,6 +220,16 @@ export default {
           if (index === 0) this.blog_ilike_top = item
           else this.blog_ilike_list.push(item)
         })
+      } catch (error) {
+        console.error(error)
+      }
+    },
+    async _getSingleBlog() {
+      try {
+        const ifocus = await Blog.getBlogById(6)
+        this.blog_ifocus = ifocus
+        // const version = await Blog.getBlogById(10)
+        // this.blog_version = version
       } catch (error) {
         console.error(error)
       }
