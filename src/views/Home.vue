@@ -16,7 +16,7 @@
         <br />
       </div>
       <div class="container">
-        <h1 class="title has-text-success-dark is-5">最新文章</h1>
+        <h1 class="title has-text-success-dark is-5"># 最新文章</h1>
         <div
           class="card"
           v-if="blog_recent_top"
@@ -24,15 +24,23 @@
           @click="goBlogUrl(blog_recent_top.id)"
         >
           <div class="card-image" style="position:relative;">
-            <figure class="image is-2by1">
-              <img
-                :style="{
-                  backgroundImage: 'url(' + blog_recent_top.blog_cover + ')',
-                  backgroundSize: '100%'
-                }"
-              >
-<!--              <img v-bind:src="blog_recent_top.blog_cover" alt="Placeholder image">-->
-            </figure>
+            <div
+              class="image is-2by1"
+              :style="{
+                backgroundImage: 'url(' + blog_recent_top.blog_cover + ')',
+                backgroundSize: '100%'
+              }"
+            >
+            </div>
+<!--            <figure class="image is-2by1">-->
+<!--              <img-->
+<!--                :style="{-->
+<!--                  backgroundImage: 'url(' + blog_recent_top.blog_cover + ')',-->
+<!--                  backgroundSize: '100%',-->
+<!--                  backgroundColor: 'red'-->
+<!--                }"-->
+<!--              >-->
+<!--            </figure>-->
           </div>
           <div
             class="card-content"
@@ -69,7 +77,7 @@
         </div>
         <br />
         <br />
-        <h1 class="title has-text-success-dark is-5">我喜欢的</h1>
+        <h1 class="title has-text-success-dark is-5"># 我喜欢的</h1>
         <div
           class="card"
           v-if="blog_ilike_top"
@@ -77,15 +85,14 @@
           @click="goBlogUrl(blog_ilike_top.id)"
         >
           <div class="card-image" style="position:relative;">
-            <figure class="image is-2by1">
-              <img
-                :style="{
-                  backgroundImage: 'url(' + blog_ilike_top.blog_cover + ')',
-                  backgroundSize: '100%'
-                }"
-              >
-<!--              <img v-bind:src="blog_ilike_top.blog_cover" alt="Placeholder image">-->
-            </figure>
+            <div
+              class="image is-2by1"
+              :style="{
+                backgroundImage: 'url(' + blog_ilike_top.blog_cover + ')',
+                backgroundSize: '100%'
+              }"
+            >
+            </div>
           </div>
           <div
             class="card-content"
@@ -129,14 +136,14 @@
           @click="goBlogUrl(blog_ifocus.id)"
         >
           <div class="card-image" style="position:relative;">
-            <figure class="image is-2by1">
-              <img
-                :style="{
-                  backgroundImage: 'url(' + blog_ifocus.blog_cover + ')',
-                  backgroundSize: '100%'
-                }"
-              >
-            </figure>
+            <div
+              class="image is-2by1"
+              :style="{
+                backgroundImage: 'url(' + blog_ifocus.blog_cover + ')',
+                backgroundSize: '100%'
+              }"
+            >
+            </div>
           </div>
           <div
             class="card-content"

@@ -47,22 +47,22 @@
       <br />
       <br />
       <h1 class="title is-5 has-text-success-dark">联系方式</h1>
-      <div class="container">
-        <span class="icon-text">
-          <span class="icon">
-            <i class="fas fa-user"></i>
-          </span>
-          <span>王晨光</span>
-        </span>
-      </div>
-      <div class="container">
-        <span class="icon-text">
-          <span class="icon">
-            <i class="fas fa-comments"></i>
-          </span>
-          <span>139-0604-1328</span>
-        </span>
-      </div>
+<!--      <div class="container">-->
+<!--        <span class="icon-text">-->
+<!--          <span class="icon">-->
+<!--            <i class="fas fa-user"></i>-->
+<!--          </span>-->
+<!--          <span>王晨光</span>-->
+<!--        </span>-->
+<!--      </div>-->
+<!--      <div class="container">-->
+<!--        <span class="icon-text">-->
+<!--          <span class="icon">-->
+<!--            <i class="fas fa-comments"></i>-->
+<!--          </span>-->
+<!--          <span>139-0604-1328</span>-->
+<!--        </span>-->
+<!--      </div>-->
       <div class="container">
         <span class="icon-text">
           <span class="icon">
