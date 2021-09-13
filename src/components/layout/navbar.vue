@@ -75,6 +75,9 @@ export default {
         name: 'Books',
         path: 'book'
       }, {
+        name: 'Album',
+        path: 'album'
+      }, {
         name: 'About',
         path: 'about'
       }],
@@ -82,9 +85,6 @@ export default {
       navDropdownList: [{
         name: 'Github',
         url: 'https://github.com/chenkowong'
-      }, {
-        name: 'Timeline',
-        url: 'https://www.aumarco.com/timeline'
       }]
     }
   },

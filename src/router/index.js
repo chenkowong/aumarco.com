@@ -43,6 +43,14 @@ const routes = [
     component: () => import('../views/Timeline')
   },
   {
+    path: '/album',
+    name: 'Album',
+    component: () => import('../views/Album'),
+    meta: {
+      title: '王博恩的相册'
+    }
+  },
+  {
     path: '/about',
     name: 'About',
     component: () => import('../views/About'),
