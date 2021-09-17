@@ -25,21 +25,21 @@
           {{ item.name }}
         </a>
 
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link">
-            {{ navDropdownName }}
-          </a>
+<!--        <div class="navbar-item has-dropdown is-hoverable">-->
+<!--          <a class="navbar-link">-->
+<!--            {{ navDropdownName }}-->
+<!--          </a>-->
 
-          <div class="navbar-dropdown is-boxed">
-            <a class="navbar-item" v-for="(item, index) in navDropdownList" :key="index" @click="goWeb(item.url)">
-              {{ item.name }}
-            </a>
-            <hr class="navbar-divider">
-            <a class="navbar-item">
-              Report an issue
-            </a>
-          </div>
-        </div>
+<!--          <div class="navbar-dropdown is-boxed">-->
+<!--            <a class="navbar-item" v-for="(item, index) in navDropdownList" :key="index" @click="goWeb(item.url)">-->
+<!--              {{ item.name }}-->
+<!--            </a>-->
+<!--            <hr class="navbar-divider">-->
+<!--            <a class="navbar-item">-->
+<!--              Report an issue-->
+<!--            </a>-->
+<!--          </div>-->
+<!--        </div>-->
       </div>
 
       <!-- <div class="navbar-end">
@@ -66,19 +66,19 @@ export default {
       logo: logo,
       active: false,
       navLeftList: [{
-        name: 'Home',
+        name: '首页',
         path: '/'
       }, {
-        name: 'Blogs',
+        name: '文章',
         path: 'archives'
       }, {
-        name: 'Books',
+        name: '书籍',
         path: 'book'
       }, {
-        name: 'Album',
+        name: '相册',
         path: 'album'
       }, {
-        name: 'About',
+        name: '关于',
         path: 'about'
       }],
       navDropdownName: 'Social',

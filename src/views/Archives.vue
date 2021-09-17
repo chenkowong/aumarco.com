@@ -1,13 +1,25 @@
 <template>
   <div class="archives amc_page">
-    <div class="column is-6 is-offset-3">
+    <div class="column is-6 is-offset-3" style="position: relative;">
+      <loading v-if="loading"></loading>
       <figure>
-        <img src="https://qn.aumarco.com/49b68f35gy1gsjzemiyebg20vi0f63yx.gif" width="100%" height="100%">
+        <img src="https://qn.aumarco.com/Sep-15-2021%2023-58-45.gif" width="100%" height="100%">
       </figure>
       <br>
+      <div class="field has-addons" style="margin-bottom: 0px;">
+        <p class="control is-expanded">
+          <input class="input" v-model="keyWord" placeholder="search what you want ..">
+        </p>
+        <p class="control" v-if="keyWord">
+          <a class="button" @click="keyWord = ''">
+            <span class="icon is-small is-right">
+              <i class="far fa-times-circle"></i>
+            </span>
+          </a>
+        </p>
+      </div>
       <br>
       <div class="tags" style="margin-bottom: 0px;">
-<!--        <i class="tag fas fa-book-open"></i>-->
         <span
           class="tag"
           :class="{'is-success': item.isActive}"
@@ -33,14 +45,14 @@
         </thead>
         <tbody>
           <tr v-for="(item, index) in blog_list" :key="index">
-            <th style="text-align: left;">
+            <td style="text-align: left; width: 40%;">
               <div class="amc_text">
                 <span>
                   <a class="amc_router amc_page" @click="goBlogUrl(item.id)">{{item.blog_title}}</a>
                 </span>
               </div>
-            </th>
-            <td style="text-align: right;">
+            </td>
+            <td style="text-align: right; width: 40%;">
               <span style="color:grey;">{{item.create_time}}</span>
             </td>
           </tr>
@@ -67,11 +79,15 @@
 <script>
 import Sort from '@/model/sort'
 import Blog from '@/model/blog'
-
+import Loading from '@/components/layout/loading'
+import globalMixin from "@/mixin/global";
 export default {
+  components: { Loading },
+  mixins: [globalMixin],
   data () {
     return {
       active: false,
+      keyWord: '',
       form: {
         keyWord: "",
         sort_id: "",
@@ -94,8 +110,17 @@ export default {
     this._getAllSorts()
     this._getBlogsByKeyWord(0, 20)
   },
+  watch: {
+    keyWord() {
+      console.log('search')
+      this.form.keyWord = this.keyWord
+      this.blog_list = []
+      this._getBlogsByKeyWord(0, 20)
+    }
+  },
   methods: {
     async _getAllSorts() {
+      this.loading = true
       try {
         const res = await Sort.getAllSort()
         res.forEach(item => {
@@ -106,8 +131,10 @@ export default {
       } catch (e) {
         console.error(e)
       }
+      this.loading = false
     },
     async _getBlogsByKeyWord (start, pageCount) {
+      this.loading = true
       this.form.page = start
       this.form.count = pageCount
       try {
@@ -125,6 +152,7 @@ export default {
       } catch (e) {
         console.log(e)
       }
+      this.loading = false
     },
     async _getBlogsBySort (start, pageCount) {
       this.form.page = start
@@ -148,6 +176,9 @@ export default {
       const next_page = this.form.page + 1
       if (this.form.sort_id === "") await this._getBlogsByKeyWord(next_page, 20)
       else await this._getBlogsBySort(next_page, 20)
+    },
+    async handleResetSearch() {
+      console.log('hello')
     },
     async handleChangeSort(sort) {
       document.title = sort.sort_name

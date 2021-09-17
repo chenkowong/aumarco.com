@@ -1,3 +1,5 @@
+.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}
+
 .amc_page {
   margin: 0;
   padding: 0;
@@ -78,7 +80,7 @@ _::-webkit-full-page-media, _:future, :root .amc_audio {
 }
 
 .amc_book_mobile {
-  //display: none !important;
+  display: none !important;
 }
 
 .amc_book_desktop {
@@ -87,10 +89,10 @@ _::-webkit-full-page-media, _:future, :root .amc_audio {
 
 @media screen and (max-width: 1023px) {
   .amc_book_mobile {
-    display: flex !important;
+    display: block !important;
   }
   .amc_book_desktop {
-    //display: none !important;
+    display: none !important;
   }
   .amc_td_image {
     //width: 60px;

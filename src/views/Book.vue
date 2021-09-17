@@ -1,6 +1,7 @@
 <template>
   <div class="archives amc_page">
-    <div class="column is-6 is-offset-3">
+    <div class="column is-6 is-offset-3" style="position: relative;">
+      <loading v-if="loading"></loading>
 <!--      <figure class="image is-2by1">-->
 <!--        <img-->
 <!--          :style="{-->
@@ -84,8 +85,12 @@
 
 <script>
 import Book from '@/model/book'
+import Loading from "@/components/layout/loading";
+import globalMixin from "@/mixin/global";
 
 export default {
+  components: { Loading },
+  mixins: [globalMixin],
   data () {
     return {
       active: false,
@@ -105,6 +110,7 @@ export default {
   },
   methods: {
     async _getBooksByKeyWord (start, pageCount) {
+      this.loading = true
       this.form.page = start
       this.form.count = pageCount
       try {
@@ -122,6 +128,7 @@ export default {
       } catch (e) {
         console.log(e)
       }
+      this.loading = false
     },
     async _getBlogsBySort (start, pageCount) {
       this.form.page = start

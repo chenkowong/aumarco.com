@@ -1,5 +1,6 @@
 <template>
-  <div class="home amc_page">
+  <div class="home amc_page" style="position: relative;">
+    <loading v-if="loading"></loading>
     <div class="column is-6 is-offset-3">
       <div class="container">
         <figure>
@@ -177,9 +178,12 @@
 import Blog from '@/model/blog'
 import background from '@/assets/images/ilike.gif'
 import globalMixin from "@/mixin/global";
+import Loading from '@/components/layout/loading'
+import CommentInfo from "@/components/layout/comment";
 
 export default {
   name: 'Home',
+  components: { Loading },
   mixins: [globalMixin],
   data () {
     return {
@@ -198,6 +202,7 @@ export default {
     }
   },
   created () {
+    this.loading = true
     this._getRecentBlog(0, 10)
     this._getIlikeBlog(0, 10, 7)
     this._getSingleBlog()
@@ -215,6 +220,7 @@ export default {
       } catch (error) {
         console.error(error)
       }
+      this.loading = false
     },
     async _getIlikeBlog (start, pageCount, sortId) {
       try {

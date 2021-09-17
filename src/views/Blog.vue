@@ -1,6 +1,7 @@
 <template>
   <div class="blog">
-    <div class="column is-6 is-offset-3">
+    <div class="column is-6 is-offset-3" style="position: relative;">
+      <loading v-if="loading"></loading>
       <h1 class="title is-4" v-if="blog">{{blog.blog_title}}</h1>
       <p v-if="blog">
         <span class="icon-text has-text-success-dark">
@@ -87,6 +88,7 @@
           </button>
         </div>
       </div>
+      <comment-info v-if="showComment" :id="id"></comment-info>
       <table class="table is-fullwidth amc_page">
         <thead>
         <tr>
@@ -124,21 +126,26 @@
 </template>
 
 <script>
+import CommentInfo from '@/components/layout/comment'
+import Loading from '@/components/layout/loading'
 import Blog from '@/model/blog'
 import Visitor from '@/model/visitor'
 import globalMixin from "@/mixin/global";
 
 export default {
   name: 'blog',
+  components: { CommentInfo, Loading },
   mixins: [globalMixin],
   data() {
     return {
       id: null,
       blog: null,
-      recent_list: []
+      recent_list: [],
+      showComment: false
     }
   },
   created() {
+    this.loading = true
     this.initPage()
   },
   watch: {
@@ -148,6 +155,7 @@ export default {
   methods: {
     async initPage() {
       if (this.$route.query.comp) {
+        this.showComment = false
         this.id = this.$route.query.comp
       }
       await this._getBlogData()
@@ -160,6 +168,7 @@ export default {
         this.blog = res
         document.getElementById('result').innerHTML = this.blog.blog_content
         document.title = `${this.blog.sort_name} | ${this.blog.blog_title}`
+        this.showComment = true
       } catch (error) {
         console.error('find error:', error)
       }
@@ -177,9 +186,9 @@ export default {
       } catch (error) {
         console.log(error)
       }
+      this.loading = false
     },
     async dispatchBlogVisitor() {
-      console.warn('find visitor')
       const vcip = JSON.parse(sessionStorage.getItem('vis')).cip
       try {
         await Visitor.dispatchBlogVisitor({
