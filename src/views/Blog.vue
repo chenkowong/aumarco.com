@@ -5,24 +5,15 @@
       <h1 class="title is-4" v-if="blog">{{blog.blog_title}}</h1>
       <p v-if="blog">
         <span class="icon-text has-text-success-dark">
-          <span class="icon">
-            <i class="fas fa-calendar-alt"></i>
-          </span>
           <span>{{blog.create_time}}</span>
         </span>
-        <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+        <span>&nbsp;&nbsp;·&nbsp;&nbsp;</span>
         <span class="icon-text has-text-success-dark">
-          <span class="icon">
-            <i class="fas fa-tag"></i>
-          </span>
-          <span>{{blog.sort_name}}</span>
+          <span># {{blog.sort_name}}</span>
         </span>
-        <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+        <span>&nbsp;&nbsp;·&nbsp;&nbsp;</span>
         <span class="icon-text has-text-success-dark">
-          <span class="icon">
-            <i class="fas fa-eye"></i>
-          </span>
-          <span>{{blog.blog_views}}</span>
+          <span>{{blog.blog_views}} views</span>
         </span>
 <!--        <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>-->
 <!--        <span class="icon-text has-text-success-dark">-->
@@ -45,13 +36,7 @@
       </figure>
       <br />
       <div id="result" class="markdown-body"></div>
-      <br />
-      <button
-        class="button is-small is-fullwidth"
-        title="Disabled button"
-        disabled
-      >已经到最底啦</button>
-      <br />
+      <div class="is-divider"></div>
       <div class="columns is-mobile" v-if="blog">
         <div class="column is-half-desktop">
           <button
@@ -89,30 +74,26 @@
         </div>
       </div>
       <comment-info v-if="showComment" :id="id"></comment-info>
+      <br />
+      <h1 class="title is-5 has-text-success-dark" style="margin-bottom: 0;"># 最新文章</h1>
       <table class="table is-fullwidth amc_page">
         <thead>
         <tr>
-          <th style="text-align: left;">
-            <span class="icon-text has-text-success-dark">
-              <span class="icon">
-                <i class="fas fa-book-open"></i>
-              </span>
-              <span>最新文章</span>
-            </span>
+          <th>
           </th>
           <th></th>
         </tr>
         </thead>
         <tbody>
         <tr v-for="(item, index) in recent_list" :key="index">
-          <th style="text-align: left;">
+          <th style="text-align: left; width: 60%;">
             <div class="amc_text">
                 <span>
                   <a class="amc_router amc_page" @click="goBlogUrl(item.id)">{{item.blog_title}}</a>
                 </span>
             </div>
           </th>
-          <td style="text-align: right;">
+          <td style="text-align: right; width: 40%;">
             <span style="color:grey;">{{item.create_time}}</span>
           </td>
         </tr>

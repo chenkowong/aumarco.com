@@ -9,29 +9,29 @@
       <div class="media-content">
         <div class="field">
           <p class="control">
-            <textarea class="textarea is-normal" v-model="form.comment" placeholder="说说你的想法吧 .."></textarea>
+            <textarea class="textarea is-normal is-success" v-model="form.comment" placeholder="说说你的想法吧 .."></textarea>
           </p>
         </div>
         <div class="field is-grouped amc_book_desktop">
           <p class="control is-expanded has-icons-left">
-            <input class="input" type="text" v-model="form.name" placeholder="输入你的昵称">
+            <input class="input is-success" type="text" v-model="form.name" placeholder="输入你的昵称">
             <span class="icon is-small is-left">
               <i class="fas fa-user"></i>
             </span>
           </p>
           <p class="control is-expanded has-icons-left">
-            <input class="input" type="email" v-model="form.email" placeholder="输入你的邮箱地址">
+            <input class="input is-success" type="email" v-model="form.email" placeholder="输入你的邮箱地址">
             <span class="icon is-small is-left">
               <i class="fas fa-envelope"></i>
             </span>
           </p>
           <p class="control">
-            <button class="button" @click="submitForm">发&nbsp;&nbsp;&nbsp;布</button>
+            <button class="button is-success" @click="submitForm">发&nbsp;&nbsp;&nbsp;布</button>
           </p>
         </div>
         <div class="field amc_book_mobile">
           <p class="control is-expanded has-icons-left">
-            <input class="input is-small" type="text" v-model="form.name" placeholder="输入你的昵称">
+            <input class="input is-small is-success" type="text" v-model="form.name" placeholder="输入你的昵称">
             <span class="icon is-small is-left">
               <i class="fas fa-user"></i>
             </span>
@@ -39,7 +39,7 @@
         </div>
         <div class="field amc_book_mobile">
           <p class="control is-expanded has-icons-left">
-            <input class="input is-small" type="email" v-model="form.email" placeholder="输入你的邮箱地址">
+            <input class="input is-small is-success" type="email" v-model="form.email" placeholder="输入你的邮箱地址">
             <span class="icon is-small is-left">
               <i class="fas fa-envelope"></i>
             </span>
@@ -47,7 +47,7 @@
         </div>
         <div class="field amc_book_mobile">
           <p class="control">
-            <button class="button is-small is-fullwidth" @click="submitForm">发&nbsp;&nbsp;&nbsp;布</button>
+            <button class="button is-small is-success is-fullwidth" @click="submitForm">发&nbsp;&nbsp;&nbsp;布</button>
           </p>
         </div>
       </div>
@@ -55,7 +55,8 @@
     <article class="media" v-for="(item, index) in comment_list" :key="item.id">
       <figure class="media-left">
         <p class="image is-64x64">
-          <img :src="avator">
+          <img v-if="item.is_owner" :src="owner">
+          <img v-else :src="avator">
         </p>
       </figure>
       <div class="media-content">
@@ -63,7 +64,7 @@
           <p>
             <strong>{{ item.name }}</strong>
             <br>
-            <template v-if="item.reply">@{{ item.reply }} </template>{{ item.comment }}
+            <template v-if="item.reply"><span class="has-text-grey">@{{ item.reply }}&nbsp;&nbsp;</span> </template>{{ item.comment }}
             <br>
             <small>
               <a class="has-text-danger-dark" v-if="selectedIndex === index && selectedIdx === null" @click.stop="handleSelect(null, null)">取消回复</a>
@@ -73,36 +74,36 @@
         </div>
         <article class="media" v-if="selectedIndex === index && selectedIdx === null">
           <figure class="media-left">
-            <p class="image is-64x64">
+            <p class="image is-48x48">
               <img :src="avator">
             </p>
           </figure>
           <div class="media-content">
             <div class="field">
               <p class="control">
-                <textarea class="textarea" v-model="form.comment" placeholder="说说你的想法吧 .."></textarea>
+                <textarea class="textarea is-success" v-model="form.comment" placeholder="说说你的想法吧 .."></textarea>
               </p>
             </div>
             <div class="field is-grouped amc_book_desktop">
               <p class="control is-expanded has-icons-left">
-                <input class="input" type="text" v-model="form.name" placeholder="输入你的昵称">
+                <input class="input is-success" type="text" v-model="form.name" placeholder="输入你的昵称">
                 <span class="icon is-small is-left">
                   <i class="fas fa-user"></i>
                 </span>
                   </p>
                   <p class="control is-expanded has-icons-left">
-                    <input class="input" type="email" v-model="form.email" placeholder="输入你的邮箱地址">
+                    <input class="input is-success" type="email" v-model="form.email" placeholder="输入你的邮箱地址">
                     <span class="icon is-small is-left">
                   <i class="fas fa-envelope"></i>
                 </span>
               </p>
               <p class="control">
-                <button class="button" @click="submitForm">发&nbsp;&nbsp;&nbsp;布</button>
+                <button class="button is-success" @click="submitForm">发&nbsp;&nbsp;&nbsp;布</button>
               </p>
             </div>
             <div class="field amc_book_mobile">
               <p class="control is-expanded has-icons-left">
-                <input class="input is-small" type="text" v-model="form.name" placeholder="输入你的昵称">
+                <input class="input is-success is-small" type="text" v-model="form.name" placeholder="输入你的昵称">
                 <span class="icon is-small is-left">
               <i class="fas fa-user"></i>
             </span>
@@ -110,7 +111,7 @@
             </div>
             <div class="field amc_book_mobile">
               <p class="control is-expanded has-icons-left">
-                <input class="input is-small" type="email" v-model="form.email" placeholder="输入你的邮箱地址">
+                <input class="input is-success is-small" type="email" v-model="form.email" placeholder="输入你的邮箱地址">
                 <span class="icon is-small is-left">
               <i class="fas fa-envelope"></i>
             </span>
@@ -118,85 +119,88 @@
             </div>
             <div class="field amc_book_mobile">
               <p class="control">
-                <button class="button is-small is-fullwidth" @click="submitForm">发&nbsp;&nbsp;&nbsp;布</button>
+                <button class="button is-success is-small is-fullwidth" @click="submitForm">发&nbsp;&nbsp;&nbsp;布</button>
               </p>
             </div>
           </div>
         </article>
 
-        <article class="media" v-for="(itm, idx) in item.children" :key="itm.id">
-          <figure class="media-left">
-            <p class="image is-48x48">
-              <img :src="avator">
-            </p>
-          </figure>
-          <div class="media-content">
-            <div class="content">
-              <p>
-                <strong>{{ itm.name }}</strong>
-                <br>
-                <template v-if="itm.reply">@{{ itm.reply }} </template>{{ itm.comment }}
-                <br>
-                <small>
-                  <a class="has-text-danger-dark" v-if="selectedIndex === index && selectedIdx === idx" @click="handleSelect(null, null)">取消回复</a>
-                  <a class="has-text-success-dark" v-else @click="handleSelect(index, idx)">回复</a> · {{ itm.create_time }}
-                </small>
+        <div v-for="(itm, idx) in item.children" :key="itm.id" style="padding-bottom: 10px;">
+          <article class="media">
+            <figure class="media-left">
+              <p class="image is-48x48">
+                <img v-if="itm.is_owner" :src="owner">
+                <img v-else :src="avator">
               </p>
-            </div>
-            <article class="media" v-if="selectedIndex === index && selectedIdx === idx">
-              <figure class="media-left">
-                <p class="image is-64x64">
-                  <img :src="avator">
+            </figure>
+            <div class="media-content">
+              <div class="content">
+                <p>
+                  <strong>{{ itm.name }}</strong>
+                  <br>
+                  <template v-if="itm.reply"><span class="has-text-grey">@{{ itm.reply }}&nbsp;&nbsp;</span> </template>{{ itm.comment }}
+                  <br>
+                  <small>
+                    <a class="has-text-danger-dark" v-if="selectedIndex === index && selectedIdx === idx" @click="handleSelect(null, null)">取消回复</a>
+                    <a class="has-text-success-dark" v-else @click="handleSelect(index, idx)">回复</a> · {{ itm.create_time }}
+                  </small>
                 </p>
-              </figure>
-              <div class="media-content">
-                <div class="field">
-                  <p class="control">
-                    <textarea class="textarea" v-model="form.comment" placeholder="说说你的想法吧 .."></textarea>
-                  </p>
-                </div>
-                <div class="field is-grouped amc_book_desktop">
-                  <p class="control is-expanded has-icons-left">
-                    <input class="input" type="text" v-model="form.name" placeholder="输入你的昵称">
-                    <span class="icon is-small is-left">
+              </div>
+            </div>
+          </article>
+          <article class="media" v-if="selectedIndex === index && selectedIdx === idx">
+            <figure class="media-left">
+              <p class="image is-48x48">
+                <img :src="avator">
+              </p>
+            </figure>
+            <div class="media-content">
+              <div class="field">
+                <p class="control">
+                  <textarea class="textarea is-success" v-model="form.comment" placeholder="说说你的想法吧 .."></textarea>
+                </p>
+              </div>
+              <div class="field is-grouped amc_book_desktop">
+                <p class="control is-expanded has-icons-left">
+                  <input class="input is-success" type="text" v-model="form.name" placeholder="输入你的昵称">
+                  <span class="icon is-small is-left">
                     <i class="fas fa-user"></i>
                   </span>
-                  </p>
-                  <p class="control is-expanded has-icons-left">
-                    <input class="input" type="email" v-model="form.email" placeholder="输入你的邮箱地址">
-                    <span class="icon is-small is-left">
+                </p>
+                <p class="control is-expanded has-icons-left">
+                  <input class="input is-success" type="email" v-model="form.email" placeholder="输入你的邮箱地址">
+                  <span class="icon is-small is-left">
                     <i class="fas fa-envelope"></i>
                   </span>
-                  </p>
-                  <p class="control">
-                    <button class="button" @click="submitForm">发&nbsp;&nbsp;&nbsp;布</button>
-                  </p>
-                </div>
-                <div class="field amc_book_mobile">
-                  <p class="control is-expanded has-icons-left">
-                    <input class="input is-small" type="text" v-model="form.name" placeholder="输入你的昵称">
-                    <span class="icon is-small is-left">
-                    <i class="fas fa-user"></i>
-                    </span>
-                          </p>
-                        </div>
-                        <div class="field amc_book_mobile">
-                          <p class="control is-expanded has-icons-left">
-                            <input class="input is-small" type="email" v-model="form.email" placeholder="输入你的邮箱地址">
-                            <span class="icon is-small is-left">
-                      <i class="fas fa-envelope"></i>
-                    </span>
-                  </p>
-                </div>
-                <div class="field amc_book_mobile">
-                  <p class="control">
-                    <button class="button is-small is-fullwidth" @click="submitForm">发&nbsp;&nbsp;&nbsp;布</button>
-                  </p>
-                </div>
+                </p>
+                <p class="control">
+                  <button class="button is-success" @click="submitForm">发&nbsp;&nbsp;&nbsp;布</button>
+                </p>
               </div>
-            </article>
-          </div>
-        </article>
+              <div class="field amc_book_mobile">
+                <p class="control is-expanded has-icons-left">
+                  <input class="input is-success is-small" type="text" v-model="form.name" placeholder="输入你的昵称">
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-user"></i>
+                  </span>
+                </p>
+              </div>
+              <div class="field amc_book_mobile">
+                <p class="control is-expanded has-icons-left">
+                  <input class="input is-success is-small" type="email" v-model="form.email" placeholder="输入你的邮箱地址">
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-envelope"></i>
+                  </span>
+                </p>
+              </div>
+              <div class="field amc_book_mobile">
+                <p class="control">
+                  <button class="button is-success is-small is-fullwidth" @click="submitForm">发&nbsp;&nbsp;&nbsp;布</button>
+                </p>
+              </div>
+            </div>
+          </article>
+        </div>
       </div>
     </article>
     <br />
@@ -217,6 +221,7 @@
 
 <script>
 import avator from '@/assets/images/avator.gif'
+import owner from '@/assets/images/chenko.png'
 import Blog from '@/model/blog'
 
 export default {
@@ -230,6 +235,7 @@ export default {
   data() {
     return {
       avator: avator,
+      owner: owner,
       search_form: {
         page: 0,
         count: 10,

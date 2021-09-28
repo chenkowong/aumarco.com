@@ -3,21 +3,8 @@
     <div class="column is-6 is-offset-3" style="position: relative;">
       <loading v-if="loading"></loading>
       <figure>
-        <img src="https://qn.aumarco.com/Sep-15-2021%2023-58-45.gif" width="100%" height="100%">
+        <img src="https://qn.aumarco.com/desktop.gif" width="100%" height="100%">
       </figure>
-      <br>
-      <div class="field has-addons" style="margin-bottom: 0px;">
-        <p class="control is-expanded">
-          <input class="input" v-model="keyWord" placeholder="search what you want ..">
-        </p>
-        <p class="control" v-if="keyWord">
-          <a class="button" @click="keyWord = ''">
-            <span class="icon is-small is-right">
-              <i class="far fa-times-circle"></i>
-            </span>
-          </a>
-        </p>
-      </div>
       <br>
       <div class="tags" style="margin-bottom: 0px;">
         <span
@@ -28,6 +15,19 @@
           @click="handleChangeSort(item)"
           style="cursor: pointer;"
         >{{item.sort_name}}</span>
+      </div>
+      <br>
+      <div class="field has-addons" style="margin-bottom: 0px;">
+        <p class="control is-expanded">
+          <input class="input is-success" v-model="keyWord" placeholder="search what you want ..">
+        </p>
+        <p class="control" v-if="keyWord">
+          <a class="button is-success" @click="keyWord = ''">
+            <span class="icon is-small is-right">
+              <i class="far fa-times-circle"></i>
+            </span>
+          </a>
+        </p>
       </div>
       <table class="table is-fullwidth">
         <thead>
@@ -45,11 +45,11 @@
         </thead>
         <tbody>
           <tr v-for="(item, index) in blog_list" :key="index">
-            <td style="text-align: left; width: 40%;">
-              <div class="amc_text">
-                <span>
+            <td style="text-align: left; width: 60%;">
+              <div>
+                <p class="amc_text">
                   <a class="amc_router amc_page" @click="goBlogUrl(item.id)">{{item.blog_title}}</a>
-                </span>
+                </p>
               </div>
             </td>
             <td style="text-align: right; width: 40%;">

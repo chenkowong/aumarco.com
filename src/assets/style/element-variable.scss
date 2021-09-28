@@ -14,11 +14,12 @@
 }
 
 .amc_text {
-  box-sizing: border-box;
-  width: 200px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  display: -webkit-box;
+  -webkit-box-align: start;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
 }
 
 .amc_td_left {

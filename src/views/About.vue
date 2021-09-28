@@ -17,26 +17,39 @@
             <p class="subtitle is-6">@chenkowong</p>
             <p class="subtitle is-6">
               <span class="icon-text">
-                <span class="icon">
-                  <i class="far fa-eye"></i>
-                </span>
+                <span class="icon"><i class="far fa-eye"></i></span>
                 <span>{{visitor_count}}</span>
               </span>
-              <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-              <span>focus me on <a class="amc_router" href="https://github.com/chenkowong">Github</a>.</span>
+              <span>&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+              <span class="icon-text">
+                <a href="https://weibo.com/u/6772537580">
+                  <span class="icon"><i class="fab fa-weibo"></i></span>
+                </a>
+              </span>
+              <span>&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+              <span class="icon-text">
+                <a href="https://github.com/chenkowong">
+                  <span class="icon"><i class="fab fa-github"></i></span>
+                </a>
+              </span>
             </p>
           </div>
         </div>
         <div class="is-divider"></div>
+        <p class="subtitle is-6">
         全栈开发工程师，独立工作者，擅长后台管理系统开发、企业金蝶插件开发、APP、小程序、公众号、网页设计开发。
+        </p>
+<!--        <p class="subtitle is-6">-->
+<!--          <span>focus me on <a class="amc_router" href="https://github.com/chenkowong">Github</a>.</span>-->
+<!--        </p>-->
       </div>
       <br />
       <br />
       <h1 class="title is-5 has-text-success-dark"># 擅长技能</h1>
       <div class="card-content">
         <div class="columns is-mobile">
-          <div class="column is-5">后台管理系统</div>
-          <div class="column is-7" style="text-align: right;">
+          <div class="column is-6">后台管理系统</div>
+          <div class="column is-6" style="text-align: right;">
               <span class="icon has-text-success">
                 <i class="fas fa-star"></i>
               </span>
@@ -55,8 +68,8 @@
           </div>
         </div>
         <div class="columns is-mobile">
-          <div class="column is-5">企业金蝶插件</div>
-          <div class="column is-7" style="text-align: right;">
+          <div class="column is-6">企业金蝶插件</div>
+          <div class="column is-6" style="text-align: right;">
               <span class="icon has-text-success">
                 <i class="fas fa-star"></i>
               </span>
@@ -75,8 +88,8 @@
           </div>
         </div>
         <div class="columns is-mobile">
-          <div class="column is-5">APP｜小程序｜公众号</div>
-          <div class="column is-7" style="text-align: right;">
+          <div class="column is-6">移动端 · 小程序</div>
+          <div class="column is-6" style="text-align: right;">
               <span class="icon has-text-success">
                 <i class="fas fa-star"></i>
               </span>
@@ -95,8 +108,8 @@
           </div>
         </div>
         <div class="columns is-mobile">
-          <div class="column is-5">网站设计和搭建</div>
-          <div class="column is-7" style="text-align: right;">
+          <div class="column is-6">网站设计和搭建</div>
+          <div class="column is-6" style="text-align: right;">
               <span class="icon has-text-success">
                 <i class="fas fa-star"></i>
               </span>
@@ -115,8 +128,8 @@
           </div>
         </div>
         <div class="columns is-mobile">
-          <div class="column is-5">喝咖啡</div>
-          <div class="column is-7" style="text-align: right;">
+          <div class="column is-6">喝咖啡</div>
+          <div class="column is-6" style="text-align: right;">
               <span class="icon has-text-success">
                 <i class="fas fa-star"></i>
               </span>
