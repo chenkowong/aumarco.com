@@ -7,28 +7,18 @@
         <span class="icon-text has-text-success-dark">
           <span>{{blog.create_time}}</span>
         </span>
+<!--        <span>&nbsp;&nbsp;·&nbsp;&nbsp;</span>-->
+<!--        <span class="icon-text has-text-success-dark">-->
+<!--          <span># {{blog.sort_name}}</span>-->
+<!--        </span>-->
         <span>&nbsp;&nbsp;·&nbsp;&nbsp;</span>
         <span class="icon-text has-text-success-dark">
-          <span># {{blog.sort_name}}</span>
+          <span>{{blog.blog_views}} 阅读</span>
         </span>
         <span>&nbsp;&nbsp;·&nbsp;&nbsp;</span>
         <span class="icon-text has-text-success-dark">
-          <span>{{blog.blog_views}} views</span>
+          <span>{{blog.blog_comment_count}} 评论</span>
         </span>
-<!--        <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>-->
-<!--        <span class="icon-text has-text-success-dark">-->
-<!--          <span class="icon">-->
-<!--            <i class="fas fa-comment-alt"></i>-->
-<!--          </span>-->
-<!--          <span>{{blog.blog_comment_count}}</span>-->
-<!--        </span>-->
-<!--        <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>-->
-<!--        <span class="icon-text has-text-success-dark">-->
-<!--          <span class="icon">-->
-<!--            <i class="fas fa-heart"></i>-->
-<!--          </span>-->
-<!--          <span>{{blog.blog_like_count}}</span>-->
-<!--        </span>-->
       </p>
       <br />
       <figure v-if="blog">
@@ -36,8 +26,17 @@
       </figure>
       <br />
       <div id="result" class="markdown-body"></div>
-      <div class="is-divider"></div>
-      <div class="columns is-mobile" v-if="blog">
+      <div class="is-divider" style="margin-bottom: 0.8rem"></div>
+      <div class="tags" v-if="blog" style="margin-bottom: 0px;">
+        <span
+          class="tag is-small"
+          v-for="item in blog.sort"
+          :key="item.sort_id"
+          style="margin-top: 0rem;"
+        ># {{item.sort_name}}</span>
+      </div>
+      <div class="is-divider" style="margin-top: 0.4rem"></div>
+      <div class="columns is-mobile" v-if="false">
         <div class="column is-half-desktop">
           <button
             class="button"
@@ -148,7 +147,7 @@ export default {
         const res = await Blog.getBlogById(this.id)
         this.blog = res
         document.getElementById('result').innerHTML = this.blog.blog_content
-        document.title = `${this.blog.sort_name} | ${this.blog.blog_title}`
+        document.title = `${this.blog.blog_title}`
         this.showComment = true
       } catch (error) {
         console.error('find error:', error)
@@ -156,7 +155,8 @@ export default {
       const search_form = {
         keyWord: '',
         page: 0,
-        count: 10
+        count: 10,
+        removeId: this.id || ''
       }
       this.recent_list = []
       try {

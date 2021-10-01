@@ -9,13 +9,13 @@ class Blog {
 
   // 查询博客（分页 + 搜索）
   async getBlogByPages(params) {
-    const res = await get(`v1/blog/search?page=${params.page}&count=${params.count}&keyWord=${params.keyWord}`)
+    const res = await get(`v1/blog/search?page=${params.page}&count=${params.count}&keyWord=${params.keyWord}&removeId=${params.removeId}`)
     return res
   }
 
   // 查询博客（类别）
   async getBlogBySortId(params) {
-    const res = await get(`v1/blog/sort?page=${params.page}&count=${params.count}&sort_id=${params.sort_id}`)
+    const res = await get(`v1/blog/sort?page=${params.page}&count=${params.count}&sort_id=${params.sort_id}&removeId=${params.removeId}`)
     return res
   }
 

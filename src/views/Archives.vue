@@ -3,7 +3,7 @@
     <div class="column is-6 is-offset-3" style="position: relative;">
       <loading v-if="loading"></loading>
       <figure>
-        <img src="https://qn.aumarco.com/desktop.gif" width="100%" height="100%">
+        <img src="https://qn.aumarco.com/desktop5.gif" width="100%" height="100%">
       </figure>
       <br>
       <div class="tags" style="margin-bottom: 0px;">
@@ -92,7 +92,8 @@ export default {
         keyWord: "",
         sort_id: "",
         page: 0,
-        count: 20
+        count: 20,
+        removeId: ''
       },
       sort_list: [
         {

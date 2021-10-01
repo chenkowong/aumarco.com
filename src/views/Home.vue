@@ -191,7 +191,8 @@ export default {
       form: {
         keyWord: '',
         page: 0,
-        count: 10
+        count: 10,
+        removeId: ''
       },
       blog_recent_top: null,
       blog_recent_list: [],
@@ -201,11 +202,11 @@ export default {
       blog_version: null
     }
   },
-  created () {
+  async created () {
     this.loading = true
-    this._getRecentBlog(0, 10)
-    this._getIlikeBlog(0, 10, 7)
-    this._getSingleBlog()
+    await this._getRecentBlog(0, 10)
+    await this._getIlikeBlog(0, 10, 7)
+    await this._getSingleBlog()
   },
   methods: {
     async _getRecentBlog (start, pageCount) {
@@ -227,7 +228,8 @@ export default {
         const res = await Blog.getBlogBySortId({
           page: start,
           count: pageCount,
-          sort_id: sortId
+          sort_id: sortId,
+          removeId: this.blog_recent_top.id
         })
         res.items.forEach((item, index) => {
           if (index === 0) this.blog_ilike_top = item

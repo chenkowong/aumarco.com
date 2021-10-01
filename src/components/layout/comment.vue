@@ -1,11 +1,11 @@
 <template>
   <div>
     <article class="media" v-if="selectedIndex === null">
-      <figure class="media-left">
-        <p class="image is-64x64">
-          <img :src="avator">
-        </p>
-      </figure>
+<!--      <figure class="media-left">-->
+<!--        <p class="image is-64x64">-->
+<!--          <img :src="avator">-->
+<!--        </p>-->
+<!--      </figure>-->
       <div class="media-content">
         <div class="field">
           <p class="control">
