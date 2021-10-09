@@ -15,7 +15,7 @@ class Blog {
 
   // 查询博客（类别）
   async getBlogBySortId(params) {
-    const res = await get(`v1/blog/sort?page=${params.page}&count=${params.count}&sort_id=${params.sort_id}&removeId=${params.removeId}`)
+    const res = await get(`v1/blog/sort?page=${params.page}&count=${params.count}&sort_id=${params.sort_id}&removeId=${params.removeId}&desc=${params.desc}`)
     return res
   }
 

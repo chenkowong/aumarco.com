@@ -229,7 +229,8 @@ export default {
           page: start,
           count: pageCount,
           sort_id: sortId,
-          removeId: this.blog_recent_top.id
+          removeId: this.blog_recent_top.id,
+          desc: 1
         })
         res.items.forEach((item, index) => {
           if (index === 0) this.blog_ilike_top = item

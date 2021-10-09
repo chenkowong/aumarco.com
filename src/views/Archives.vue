@@ -93,7 +93,8 @@ export default {
         sort_id: "",
         page: 0,
         count: 20,
-        removeId: ''
+        removeId: '',
+        desc: 1
       },
       sort_list: [
         {

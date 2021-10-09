@@ -51,6 +51,14 @@ const routes = [
     }
   },
   {
+    path: '/letter',
+    name: 'Letter',
+    component: () => import('../views/Letter'),
+    meta: {
+      title: '一封书信'
+    }
+  },
+  {
     path: '/about',
     name: 'About',
     component: () => import('../views/About'),
