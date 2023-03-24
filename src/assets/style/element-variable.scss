@@ -6,7 +6,9 @@
   border: 0;
   font-size: 100%;
   font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, SimSun, sans-serif;
-  font-weight: normal;
+  //font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;;
+  font-weight: 400;
+  color: #262626;
 }
 
 .amc_column {
@@ -76,7 +78,8 @@ _::-webkit-full-page-media, _:future, :root .amc_audio {
 }
 
 .amc_router {
-  color: #45526b;
+  color: #262626;
+  //color: #45526b;
   text-decoration: underline;
 }
 
