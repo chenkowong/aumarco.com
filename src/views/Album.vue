@@ -1,7 +1,47 @@
 <template>
   <div class="album">
-    <div class="column is-6 is-offset-3">
-      <div class="media">
+    <div class="box" v-if="false">
+      <article class="media">
+<!--        <div class="media-left">-->
+<!--          <figure class="image is-64x64">-->
+<!--            <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">-->
+<!--          </figure>-->
+<!--        </div>-->
+        <div class="media-content">
+          <figure class="image">
+            <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
+          </figure>
+          <div class="content">
+            <p>
+              <strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+              <br>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+            </p>
+          </div>
+          <nav class="level is-mobile">
+            <div class="level-left">
+              <a class="level-item" aria-label="reply">
+            <span class="icon is-small">
+              <i class="fas fa-reply" aria-hidden="true"></i>
+            </span>
+              </a>
+              <a class="level-item" aria-label="retweet">
+            <span class="icon is-small">
+              <i class="fas fa-retweet" aria-hidden="true"></i>
+            </span>
+              </a>
+              <a class="level-item" aria-label="like">
+            <span class="icon is-small">
+              <i class="fas fa-heart" aria-hidden="true"></i>
+            </span>
+              </a>
+            </div>
+          </nav>
+        </div>
+      </article>
+    </div>
+    <div>
+      <div class="media" v-if="false">
         <div class="media-left">
           <figure class="image is-96x96">
             <img class="is-rounded" src="https://qn.aumarco.com/brian.gif" alt="Placeholder image">
@@ -11,8 +51,8 @@
           <p class="title is-4">王博恩 @brianwong</p>
           <p class="subtitle is-6">Mommy and Daddy love you forever :D</p>
         </div>
+        <br />
       </div>
-      <br />
       <div class="columns is-gapless is-multiline is-mobile">
         <div class="column is-one-third" v-for="(item, index) in timeline" :key="index">
           <div

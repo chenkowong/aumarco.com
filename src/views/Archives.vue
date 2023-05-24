@@ -1,9 +1,9 @@
 <template>
   <div class="archives amc_page">
-    <div class="column is-6 is-offset-3" style="position: relative;">
-      <loading v-if="loading"></loading>
+    <div style="position: relative;">
       <figure>
-        <img src="https://qn.aumarco.com/desktop5.gif" width="100%" height="100%">
+<!--        <img src="https://qn.aumarco.com/desktop5.gif" width="100%" height="100%">-->
+        <img src="https://qn.aumarco.com/6e93c2076c3842ab9c5d633452cc4a07.png" width="100%" height="100%">
       </figure>
       <br>
       <div class="tags" style="margin-bottom: 0px;">
@@ -18,17 +18,22 @@
       </div>
       <br>
       <div class="field has-addons" style="margin-bottom: 0px;">
-        <p class="control is-expanded">
-          <input class="input is-success" v-model="keyWord" placeholder="search what you want ..">
+        <p class="control has-icons-left is-expanded">
+          <input class="input is-dark" v-model="keyWord" placeholder="search what you want ..">
+          <span class="icon is-small is-left">
+            <i class="fas fa-search"></i>
+          </span>
         </p>
         <p class="control" v-if="keyWord">
-          <a class="button is-success" @click="keyWord = ''">
+          <a class="button is-dark" @click="keyWord = ''">
             <span class="icon is-small is-right">
               <i class="far fa-times-circle"></i>
             </span>
           </a>
         </p>
       </div>
+      <progress v-if="loading" class="progress is-small is-primary" max="100" :style="{ borderRadius: '0px', height: '4px' }">15%</progress>
+<!--      <loading v-if="loading"></loading>-->
       <table class="table is-fullwidth">
         <thead>
           <tr>
@@ -44,7 +49,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(item, index) in blog_list" :key="index">
+          <tr v-for="(item, index) in blog_list" :key="index" :style="{ fontSize: global_font_size }">
             <td style="text-align: left; width: 60%;">
               <div>
                 <p class="amc_text">
@@ -53,7 +58,7 @@
               </div>
             </td>
             <td style="text-align: right; width: 40%;">
-              <span style="color:grey;">{{item.create_time}}</span>
+              <span class="amc_date">{{item.create_time}}</span>
             </td>
           </tr>
           </tbody>
@@ -124,7 +129,7 @@ export default {
     async _getAllSorts() {
       this.loading = true
       try {
-        const res = await Sort.getAllSort()
+        const res = await Sort.getAllSort(1)
         res.forEach(item => {
           item.sort_name = `# ${item.sort_name}`
           this.$set(item, 'isActive', false)
@@ -147,6 +152,7 @@ export default {
             this.blog_list.push(item)
             if (this.blog_list.length === this.blog_total) this.showButton = false
             else this.showButton = true
+            item.create_time = this.dateFormatter(item.create_time)
           })
         } else {
           this.showButton = false
@@ -166,6 +172,7 @@ export default {
           res.items.forEach(item => {
             this.blog_list.push(item)
             if (this.blog_list.length === this.blog_total) this.showButton = false
+            item.create_time = this.dateFormatter(item.create_time)
           })
         } else {
           this.showButton = false

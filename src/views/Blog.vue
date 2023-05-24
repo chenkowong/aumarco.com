@@ -1,16 +1,12 @@
 <template>
   <div class="blog">
-    <div class="column is-6 is-offset-3" style="position: relative;">
+    <div style="position: relative;">
       <loading v-if="loading"></loading>
       <h1 class="title is-4" v-if="blog">{{blog.blog_title}}</h1>
-      <p v-if="blog">
+      <p v-if="blog" :style="{ fontSize: global_font_size }">
         <span class="icon-text has-text-success-dark">
           <span>{{blog.create_time}}</span>
         </span>
-<!--        <span>&nbsp;&nbsp;·&nbsp;&nbsp;</span>-->
-<!--        <span class="icon-text has-text-success-dark">-->
-<!--          <span># {{blog.sort_name}}</span>-->
-<!--        </span>-->
         <span>&nbsp;&nbsp;·&nbsp;&nbsp;</span>
         <span class="icon-text has-text-success-dark">
           <span>{{blog.blog_views}} 阅读</span>
@@ -25,7 +21,7 @@
         <img v-bind:src="blog.blog_cover" width="100%" height="100%">
       </figure>
       <br />
-      <div id="result" class="markdown-body"></div>
+      <div id="result" class="markdown-body" :style="{ fontSize: global_font_size }"></div>
       <div class="is-divider" style="margin-bottom: 0.8rem"></div>
       <div class="tags" v-if="blog" style="margin-bottom: 0px;">
         <span
@@ -36,6 +32,7 @@
         ># {{item.sort_name}}</span>
       </div>
       <div class="is-divider" style="margin-top: 0.4rem"></div>
+<!--      <div id="qrcode"></div>-->
       <div class="columns is-mobile" v-if="false">
         <div class="column is-half-desktop">
           <button
@@ -84,21 +81,21 @@
         </tr>
         </thead>
         <tbody>
-        <tr v-for="(item, index) in recent_list" :key="index">
-          <th style="text-align: left; width: 60%;">
-            <div class="amc_text">
-                <span>
-                  <a class="amc_router amc_page" @click="goBlogUrl(item.id)">{{item.blog_title}}</a>
-                </span>
-            </div>
-          </th>
-          <td style="text-align: right; width: 40%;">
-            <span style="color:grey;">{{item.create_time}}</span>
-          </td>
-        </tr>
+          <tr v-for="(item, index) in recent_list" :key="index" :style="{ fontSize: global_font_size }">
+            <th style="text-align: left; width: 60%;">
+              <div class="amc_text">
+                  <span>
+                    <a class="amc_router amc_page" @click="goBlogUrl(item.id)">{{item.blog_title}}</a>
+                  </span>
+              </div>
+            </th>
+            <td style="text-align: right; width: 40%;">
+              <span style="color:grey;">{{item.create_time}}</span>
+            </td>
+          </tr>
         </tbody>
         <tfoot>
-        <tr><th></th><th></th></tr>
+          <tr><th></th><th></th></tr>
         </tfoot>
       </table>
     </div>
@@ -111,6 +108,7 @@ import Loading from '@/components/layout/loading'
 import Blog from '@/model/blog'
 import Visitor from '@/model/visitor'
 import globalMixin from "@/mixin/global";
+import QRCode from 'qrcodejs2'
 
 export default {
   name: 'blog',
@@ -141,6 +139,8 @@ export default {
       await this._getBlogData()
       document.body.scrollTop = 0
       document.documentElement.scrollTop = 0
+      // 2022-05-24 for test
+      // await this._getQRCode()
     },
     async _getBlogData() {
       try {
@@ -168,6 +168,18 @@ export default {
         console.log(error)
       }
       this.loading = false
+    },
+    async _getQRCode() {
+      const url = window.location.href
+      // console.log(url)
+      const qrcode = new QRCode('qrcode', {
+        text: url,
+        width: 132,
+        height: 132,
+        colorDark: '#000',
+        colorLight: '#fff',
+        correctLevel : QRCode.CorrectLevel.H
+      })
     },
     async dispatchBlogVisitor() {
       const vcip = JSON.parse(sessionStorage.getItem('vis')).cip

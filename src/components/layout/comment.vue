@@ -251,7 +251,8 @@ export default {
         website: '',
         comment: '',
         reply: '',
-        parent_id: 0
+        parent_id: 0,
+        is_owner: 0
       },
       comment_list: [],
       comment_total: null,

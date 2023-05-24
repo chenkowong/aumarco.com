@@ -5,10 +5,18 @@
   padding: 0;
   border: 0;
   font-size: 100%;
-  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, SimSun, sans-serif;
-  //font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;;
+  line-height: 1.5;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  //font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, SimSun, sans-serif;
+  -webkit-font-smoothing: subpixel-antialiased;
+  letter-spacing: normal;
   font-weight: 400;
-  color: #262626;
+  color: #000;
+  //color: #262626;
+}
+
+a {
+  color: #45526b;
 }
 
 .amc_column {
@@ -68,6 +76,10 @@
   -webkit-line-clamp:1;
 }
 
+.amc_date {
+  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, SimSun, sans-serif !important;
+}
+
 .amc_audio {
   background: rgb(241,243,244);
 }
@@ -78,6 +90,7 @@ _::-webkit-full-page-media, _:future, :root .amc_audio {
 }
 
 .amc_router {
+  //color: #000;
   color: #262626;
   //color: #45526b;
   text-decoration: underline;

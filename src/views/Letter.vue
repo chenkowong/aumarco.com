@@ -1,6 +1,6 @@
 <template>
   <div class="blog">
-    <div class="column is-6 is-offset-3" style="position: relative;">
+    <div style="position: relative;">
       <loading v-if="loading"></loading>
       <div class="card-content">
         <div class="media">

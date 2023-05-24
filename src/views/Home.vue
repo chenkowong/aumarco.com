@@ -1,7 +1,7 @@
 <template>
-  <div class="home amc_page" style="position: relative;">
+  <div class="home amc_page" :style="{ position: 'relative', fontSize: global_font_size }">
     <loading v-if="loading"></loading>
-    <div class="column is-6 is-offset-3">
+    <div>
       <div class="container">
         <figure>
           <img v-bind:src="background" width="100%" height="100%">
@@ -13,7 +13,6 @@
           我们其实已经在物联网这个巨变中了, 每一天我们都在听闻某某行业先锋又在技术领域领先了一小步。
           这些小变化慢慢积累起来，逐渐成为未来的科技大爆炸 」🚀🚀🚀
         </div>
-        <br />
         <br />
       </div>
       <div class="container">
@@ -45,7 +44,7 @@
           </div>
           <div
             class="card-content"
-            style="position: absolute; bottom: 0; left: 0; right: 0; border-radius: 0px; background: rgba(255,255,255,0.8)"
+            style="position: absolute; bottom: 0; left: 0; right: 0; border-radius: 0px; background: rgba(255,255,255,0.5)"
           >
             <div class="content columns is-mobile">
               <div class="column is-9 amc_text">
@@ -53,7 +52,7 @@
 <!--                <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>-->
                 <span>{{blog_recent_top.blog_title}}</span>
               </div>
-              <div class="column is-3" style="text-align: right;">
+              <div v-if="false" class="column is-3" style="text-align: right;">
                 <span class="icon-text">
                   <span></span>
                   <span class="icon">
@@ -72,11 +71,10 @@
               <a class="amc_router" @click="goBlogUrl(item.id)">{{item.blog_title}}</a>
             </span>
           </div>
-          <div class="column is-4 amc_column" style="text-align: right;">
-            <span style="color:grey;">{{item.create_time}}</span>
+          <div class="column is-4 amc_column amc_date" style="text-align: right;">
+            <span>{{item.create_time}}</span>
           </div>
         </div>
-        <br />
         <br />
         <h1 class="title has-text-success-dark is-5"># 我喜欢的</h1>
         <div
@@ -97,7 +95,7 @@
           </div>
           <div
             class="card-content"
-            style="position: absolute; bottom: 0; left: 0; right: 0; border-radius: 0px; background: rgba(255,255,255,0.8)"
+            style="position: absolute; bottom: 0; left: 0; right: 0; border-radius: 0px; background: rgba(255,255,255,0.5)"
           >
             <div class="content columns is-mobile">
               <div class="column is-9 amc_text">
@@ -105,7 +103,7 @@
                 <!--                <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>-->
                 <span>{{blog_ilike_top.blog_title}}</span>
               </div>
-              <div class="column is-3" style="text-align: right;">
+              <div v-if="false" class="column is-3" style="text-align: right;">
                 <span class="icon-text">
                   <span></span>
                   <span class="icon">
@@ -124,11 +122,10 @@
               <a class="amc_router" @click="goBlogUrl(item.id)">{{item.blog_title}}</a>
             </span>
           </div>
-          <div class="column is-4 amc_column" style="text-align: right;">
-            <span style="color:grey;">{{item.create_time}}</span>
+          <div class="column is-4 amc_column amc_date" style="text-align: right;">
+            <span>{{item.create_time}}</span>
           </div>
         </div>
-        <br />
         <br />
         <div
           class="card"
@@ -148,7 +145,7 @@
           </div>
           <div
             class="card-content"
-            style="position: absolute; bottom: 0; left: 0; right: 0; border-radius: 0px; background: rgba(255,255,255,0.8)"
+            style="position: absolute; bottom: 0; left: 0; right: 0; border-radius: 0px; background: rgba(255,255,255,0.5)"
           >
             <div class="content columns is-mobile">
               <div class="column is-9 amc_text">
@@ -156,7 +153,7 @@
                 <!--                <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>-->
                 <span>{{blog_ifocus.blog_title}}</span>
               </div>
-              <div class="column is-3" style="text-align: right;">
+              <div v-if="false" class="column is-3" style="text-align: right;">
                 <span class="icon-text">
                   <span></span>
                   <span class="icon">
@@ -167,7 +164,6 @@
             </div>
           </div>
         </div>
-        <br />
         <br />
       </div>
     </div>
@@ -217,6 +213,7 @@ export default {
         res.items.forEach((item, index) => {
           if (index === 0) this.blog_recent_top = item
           else this.blog_recent_list.push(item)
+          item.create_time = this.dateFormatter(item.create_time)
         })
       } catch (error) {
         console.error(error)
@@ -235,6 +232,7 @@ export default {
         res.items.forEach((item, index) => {
           if (index === 0) this.blog_ilike_top = item
           else this.blog_ilike_list.push(item)
+          item.create_time = this.dateFormatter(item.create_time)
         })
       } catch (error) {
         console.error(error)

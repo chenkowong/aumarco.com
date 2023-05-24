@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <div class="column is-6 is-offset-3">
+    <div>
       <div class="timeline is-centered" v-for="(itm, idx) in timeline" :key="idx">
         <header class="timeline-header">
           <span class="tag is-badge-info" :class="{ 'is-medium': idx === 0 ? true : false }">{{ itm.title }}</span>

@@ -1,6 +1,6 @@
 <template>
   <div class="archives amc_page">
-    <div class="column is-6 is-offset-3" style="position: relative;">
+    <div style="position: relative;">
       <loading v-if="loading"></loading>
 <!--      <figure class="image is-2by1">-->
 <!--        <img-->
@@ -11,7 +11,8 @@
 <!--        >-->
 <!--      </figure>-->
       <figure>
-        <img src="https://qn.aumarco.com/IMG_62262.JPG" width="100%" height="100%">
+        <img src="https://qn.aumarco.com/002b88f71fc84098bd3cebbb800b1d91.jpg" width="100%" height="100%">
+<!--        <img src="https://qn.aumarco.com/IMG_62262.JPG" width="100%" height="100%">-->
       </figure>
       <br>
       <div>
