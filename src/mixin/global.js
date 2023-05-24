@@ -70,7 +70,8 @@ const globalMixin = {
     // 日期过滤函数
     dateFormatter(nows) {
       if (!nows) return ''
-      const now = new Date(nows)
+      const regTime = nows.replace(/\-/g, "/") // 修正IOS系统网页上时间显示Nan问题
+      const now = new Date(regTime)
       const year = now.getFullYear()
 
       let month = now.getMonth() + 1

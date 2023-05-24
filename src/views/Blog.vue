@@ -90,7 +90,7 @@
               </div>
             </th>
             <td style="text-align: right; width: 40%;">
-              <span style="color:grey;">{{item.create_time}}</span>
+              <span class="amc_date">{{item.create_time}}</span>
             </td>
           </tr>
         </tbody>
@@ -163,6 +163,7 @@ export default {
         const res = await Blog.getBlogByPages(search_form)
         res.items.forEach(item => {
           if (item.id.toString() !== this.id) this.recent_list.push(item)
+          item.create_time = this.dateFormatter(item.create_time)
         })
       } catch (error) {
         console.log(error)
