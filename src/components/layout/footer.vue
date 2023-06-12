@@ -1,6 +1,6 @@
 <template>
   <div class="amc_page" :style="{ position: 'relative', fontSize: global_font_size }">
-    <footer class="footer is-white" :style="{ padding: '24px', maxWidth: '936px', margin: '0 auto' }">
+    <footer class="footer amc_table" :style="{ padding: '24px', maxWidth: '936px', margin: '0 auto' }">
       <div class="columns">
         <div class="column is-three-fifths has-text-centered">
           <p>©️2019-{{ current_year }} 王晨光

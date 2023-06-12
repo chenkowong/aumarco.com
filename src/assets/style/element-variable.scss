@@ -131,3 +131,10 @@ _::-webkit-full-page-media, _:future, :root .amc_audio {
     width: 70%;
   }
 }
+
+.amc_table, .amc_table > td, th {
+  background-color: #f7f6f4;
+}
+td, th {
+  border: none !important;
+}

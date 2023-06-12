@@ -98,6 +98,13 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../assets/style/element-variable.scss';
+.navbar-brand, .navbar-menu {
+  background-color: #f7f6f4;
+  //border-bottom: 4px double #343331;
+}
+.navbar-brand {
+
+}
 .navbar-item, .navbar-link {
   color: #45526b !important;
 }

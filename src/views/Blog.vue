@@ -72,7 +72,7 @@
       <comment-info v-if="showComment" :id="id"></comment-info>
       <br />
       <h1 class="title is-5 has-text-success-dark" style="margin-bottom: 0;"># 最新文章</h1>
-      <table class="table is-fullwidth amc_page">
+      <table class="table is-fullwidth amc_page amc_table">
         <thead>
         <tr>
           <th>

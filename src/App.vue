@@ -22,4 +22,7 @@ export default {
 </script>
 
 <style lang="scss">
+html {
+  background-color: #f7f6f4;
+}
 </style>

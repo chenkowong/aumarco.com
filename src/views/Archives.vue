@@ -34,7 +34,7 @@
       </div>
       <progress v-if="loading" class="progress is-small is-primary" max="100" :style="{ borderRadius: '0px', height: '4px' }">15%</progress>
 <!--      <loading v-if="loading"></loading>-->
-      <table class="table is-fullwidth">
+      <table class="table is-fullwidth amc_table">
         <thead>
           <tr>
             <th style="text-align: left;">
