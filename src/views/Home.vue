@@ -11,7 +11,7 @@
           「 社会时常都在发生巨变，这自然会让我们好奇究竟下一次巨变会是什么样子。
           过去二十年移动手机或智能手机曾经独占鳌头那接下来的二十年这将会被物联网所取代。
           我们其实已经在物联网这个巨变中了, 每一天我们都在听闻某某行业先锋又在技术领域领先了一小步。
-          这些小变化慢慢积累起来，逐渐成为未来的科技大爆炸 」🚀🚀🚀
+          这些小变化慢慢积累起来，逐渐成为未来的科技大爆炸🚀🚀🚀 」
         </div>
         <br />
       </div>
@@ -47,7 +47,7 @@
             style="position: absolute; bottom: 0; left: 0; right: 0; border-radius: 0px; background: rgba(255,255,255,0.5)"
           >
             <div class="content columns is-mobile">
-              <div class="column is-9 amc_text">
+              <div class="column is-9">
 <!--                <span>{{blog_recent_top.sort_name}}</span>-->
 <!--                <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>-->
                 <span>{{blog_recent_top.blog_title}}</span>
@@ -98,7 +98,7 @@
             style="position: absolute; bottom: 0; left: 0; right: 0; border-radius: 0px; background: rgba(255,255,255,0.5)"
           >
             <div class="content columns is-mobile">
-              <div class="column is-9 amc_text">
+              <div class="column is-9">
                 <!--                <span>{{blog_recent_top.sort_name}}</span>-->
                 <!--                <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>-->
                 <span>{{blog_ilike_top.blog_title}}</span>

@@ -64,7 +64,7 @@ export default {
         name: '文章',
         path: 'archives'
       }, {
-        name: '书籍',
+        name: '书单',
         path: 'book'
       },
       // {
