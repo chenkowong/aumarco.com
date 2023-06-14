@@ -33,10 +33,10 @@ a {
 }
 
 .amc_td_left {
-  width: 14%;
+  width: 20%;
 }
 .amc_td_right {
-  width: 84%;
+  width: 80%;
 }
 
 .amc_td_image {
@@ -132,9 +132,9 @@ _::-webkit-full-page-media, _:future, :root .amc_audio {
   }
 }
 
-.amc_table, .amc_table > td, th {
+.amc_table, .amc_book_table {
   background-color: #f7f6f4;
 }
-td, th {
+.amc_table th, .amc_table td, .amc_book_table th {
   border: none !important;
 }

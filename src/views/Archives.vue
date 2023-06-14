@@ -8,8 +8,8 @@
       <br>
       <div class="tags" style="margin-bottom: 0px;">
         <span
-          class="tag"
-          :class="{'is-success': item.isActive}"
+          class="tag is-white"
+          :class="{'is-black': item.isActive}"
           v-for="(item, index) in sort_list"
           :key="index"
           @click="handleChangeSort(item)"

@@ -100,7 +100,7 @@ export default {
 @import '../../assets/style/element-variable.scss';
 .navbar-brand, .navbar-menu {
   background-color: #f7f6f4;
-  //border-bottom: 4px double #343331;
+  border-bottom: 1px solid #dbdbdb;
 }
 .navbar-brand {
 

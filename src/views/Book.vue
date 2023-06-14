@@ -11,8 +11,8 @@
 <!--        >-->
 <!--      </figure>-->
       <figure>
-        <img src="https://qn.aumarco.com/002b88f71fc84098bd3cebbb800b1d91.jpg" width="100%" height="100%">
-<!--        <img src="https://qn.aumarco.com/IMG_62262.JPG" width="100%" height="100%">-->
+<!--        <img src="https://qn.aumarco.com/Fr3coZk22l5IhMqH2U-76V3-ttVD" width="100%" height="100%">-->
+        <img src="https://qn.aumarco.com/Fjub_Abrc1TrxSBug0S0X-nPJ8p1" width="100%" height="100%">
       </figure>
       <br>
       <div>
@@ -32,7 +32,7 @@
 <!--          </figure>-->
 <!--        </div>-->
 <!--      </div>-->
-      <table class="table is-fullwidth">
+      <table class="table is-fullwidth amc_book_table">
         <thead>
         <tr>
           <th style="text-align: left;">
@@ -41,7 +41,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr v-for="(item, index) in blog_list" :key="index" style="cursor: pointer;" @click="goBlogUrl(item.blog_id)">
+        <tr v-for="(item, index) in blog_list" :key="index">
           <td class="amc_td_left">
             <figure class="image is-3by4">
               <img
@@ -55,12 +55,13 @@
           </td>
           <td class="amc_td_right">
             <div>
-<!--                <h1 class="has-text-black is-6 amc_td_text" style="font-weight: bold;">{{item.title}}｜{{item.author}}</h1>-->
-              <p class="has-text-black is-6 amc_text_by2 amc_td_text_medium" style="font-weight: bold;">
-                {{item.title}}
+              <p>
+                <span class="has-text-black is-6 amc_text_by2 amc_td_text_medium" style="font-weight: bold;">{{item.title}}</span>
+<!--                <span class="has-text-grey amc_td_text_small">{{item.percentage}}%</span>-->
               </p>
-              <p class="has-text-grey is-6 amc_text_by1 amc_td_text_small">{{item.author}}</p>
-              <p class="has-text-grey amc_td_text_small">{{item.percentage}}%</p>
+              <p class="has-text-black is-6 amc_text_by1 amc_td_text_small">{{item.author}}</p>
+              <p class="has-text-black amc_td_text_small">{{item.remark}}</p>
+              <p class="has-text-black amc_td_text_small">{{item.summary}}</p>
             </div>
           </td>
         </tr>
