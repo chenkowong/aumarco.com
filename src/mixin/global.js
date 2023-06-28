@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import axios from 'axios'
 import Visitor from '@/model/visitor'
 
 const globalMixin = {
@@ -17,9 +18,6 @@ const globalMixin = {
     this.screenheight = `${window.innerHeight - 190}px`
     if (this.screenWidth <= 480) this.global_font_size = '14px'
     else this.global_font_size = '16px'
-    this._getCurrentYear()
-    this._getVisitorCount()
-    this.registerVisitor()
   },
   mounted() {
     const _this = this
@@ -48,13 +46,25 @@ const globalMixin = {
       }
     },
     async registerVisitor () {
+      console.log('call vis', sessionStorage.getItem('vis'))
       if (sessionStorage.getItem('vis') === null) {
+        console.log('not vis')
         // console.log('cannot search visitor')
         try {
-          const visitor = returnCitySN
-          await Visitor.selectVisitorByCip(visitor)
-          sessionStorage.setItem('vis', JSON.stringify(visitor))
-          this.register_visitor = true
+          const res = await axios.get('http://ip-api.com/json/?fields=61439')
+          console.log('res', res)
+          if (res.data.status === 'success') {
+            const visitor = {
+              cid: res.data.region,
+              cip: res.data.query,
+              cname: `${res.data.country} ${res.data.regionName} ${res.data.city}`,
+              ...res.data
+            }
+            await Visitor.selectVisitorByCip(visitor)
+            sessionStorage.setItem('vis', JSON.stringify(visitor))
+            this.register_visitor = true
+          }
+
           // console.warn('register visitor')
         } catch (error) {
           console.error(error)

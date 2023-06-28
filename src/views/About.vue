@@ -493,6 +493,9 @@ export default {
       avatar: avatar,
       visitor_count: null
     }
+  },
+  mounted() {
+    this._getVisitorCount()
   }
 }
 </script>

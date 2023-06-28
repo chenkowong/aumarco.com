@@ -26,7 +26,10 @@ import globalMixin from "@/mixin/global";
 
 export default {
   name: "amc-footer",
-  mixins: [globalMixin]
+  mixins: [globalMixin],
+  mounted() {
+    this._getCurrentYear()
+  }
 }
 </script>
 

@@ -203,6 +203,7 @@ export default {
     await this._getRecentBlog(0, 10)
     await this._getIlikeBlog(0, 10, 7)
     await this._getSingleBlog()
+    await this.registerVisitor()
   },
   methods: {
     async _getRecentBlog (start, pageCount) {

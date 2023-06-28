@@ -141,6 +141,7 @@ export default {
       document.documentElement.scrollTop = 0
       // 2022-05-24 for test
       // await this._getQRCode()
+      await this.registerVisitor()
     },
     async _getBlogData() {
       try {

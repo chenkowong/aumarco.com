@@ -1,4 +1,4 @@
-import { get } from './axios'
+import { get, post } from './axios'
 
 class Visitor {
   async getVisitorById(id) {
@@ -7,7 +7,7 @@ class Visitor {
   }
 
   async selectVisitorByCip(params) {
-    const res = await get(`v1/visitor?cip=${params.cip}&cid=${params.cid}&cname=${params.cname}`)
+    const res = await post(`v1/visitor`, params)
     return res
   }
 
