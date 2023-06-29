@@ -51,13 +51,15 @@ const globalMixin = {
         console.log('not vis')
         // console.log('cannot search visitor')
         try {
-          const res = await axios.get('http://ip-api.com/json/?fields=61439')
+          const res = await axios.get('https://ipapi.co/json/')
           console.log('res', res)
-          if (res.data.status === 'success') {
+          if (res.status === 200) {
             const visitor = {
-              cid: res.data.region,
-              cip: res.data.query,
-              cname: `${res.data.country} ${res.data.regionName} ${res.data.city}`,
+              cid: res.data.country,
+              cip: res.data.ip,
+              lat: res.data.latitude,
+              lon: res.data.longitude,
+              cname: `${res.data.country_name} ${res.data.region} ${res.data.city}`,
               ...res.data
             }
             await Visitor.selectVisitorByCip(visitor)
